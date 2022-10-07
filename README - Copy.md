@@ -1,2 +1,0 @@
-# Cubicide
-# Cringe Gaming
