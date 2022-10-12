@@ -1,0 +1,73 @@
+{
+    "name": "InputControls",
+    "maps": [
+        {
+            "name": "Mouse",
+            "id": "7957a6e0-0272-4c06-85be-b2f3c65c0ebe",
+            "actions": [
+                {
+                    "name": "Mouse Delta",
+                    "type": "PassThrough",
+                    "id": "5ba3b3d7-7a79-4d15-bebe-b40c4acd7297",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "712dcaa2-2d21-4c4f-a4c8-21f8e7ddc921",
+                    "path": "<Mouse>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Mouse Delta",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "ButtonMash",
+            "id": "76833813-b49c-4436-8842-acad1a300357",
+            "actions": [
+                {
+                    "name": "Mash",
+                    "type": "Button",
+                    "id": "c440b2c6-b989-4ac9-b5a6-735d8a3ca5c8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "2480eae1-e1d3-49cd-808b-2e6a99a52742",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Mash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "74e38882-e3dd-4d76-a24c-f70dfc548ee2",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Mash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
