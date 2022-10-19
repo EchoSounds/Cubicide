@@ -1,5 +1,5 @@
 {
-    "name": "InputControls",
+    "name": "PlayerInputs",
     "maps": [
         {
             "name": "Mouse",
@@ -30,7 +30,7 @@
             ]
         },
         {
-            "name": "ButtonMash",
+            "name": "SingleButtonMash",
             "id": "76833813-b49c-4436-8842-acad1a300357",
             "actions": [
                 {
@@ -65,6 +65,56 @@
                     "action": "Mash",
                     "isComposite": false,
                     "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "MultiButtonMash",
+            "id": "480213d7-6eaa-4ef2-b441-6ef658736187",
+            "actions": [
+                {
+                    "name": "Mash",
+                    "type": "Button",
+                    "id": "622571df-d7bf-4f3a-a1cc-389bba1c4859",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "1D Axis",
+                    "id": "ebe12dca-da86-462e-bbe8-cf852adae87c",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Mash",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "bf3c8b8d-95b4-49ac-a85a-8f28e5f005ad",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Mash",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "d51df416-8ee0-4b0a-ba66-d918c278564e",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Mash",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         }

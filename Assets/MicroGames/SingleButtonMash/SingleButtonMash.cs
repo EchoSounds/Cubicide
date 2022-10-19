@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class ButtonMash : MonoBehaviour
+public class SingleButtonMash : MonoBehaviour
 {
-    private bool pressed = false;
+    //private bool pressed = false;
     private bool playing = true;
     private float fill = 100f;
     private float penis;
@@ -55,12 +55,11 @@ public class ButtonMash : MonoBehaviour
     private void Update()
     {
         //Difficulty calculations
-        //penis += Time.deltaTime / 10;
-        //Debug.Log(penis);
-        //decreaseValue = Mathf.Pow(decreaseValue * difficultyMultiplier, penis);
+        decreaseValue += (0.1f * difficultyMultiplier) * Time.deltaTime;
 
         //Calculate the remianing time
         remainingTime = Mathf.Clamp(remainingTime -= Time.deltaTime, 0, 999999);
+        remainingTime = Mathf.Round(remainingTime * 100f) / 100f;
 
         //Only do these things if the game is playing
         if (playing)
@@ -69,15 +68,15 @@ public class ButtonMash : MonoBehaviour
             timerText.text = remainingTime.ToString();
 
             //Check if space down
-            if (Input.GetKeyDown(KeyCode.Space) && !pressed)
+            if (inputs.SingleButtonMash.Mash.WasPressedThisFrame())
             {
-                pressed = true;
+                //pressed = true;
                 //Add buttonValue to fill
                 fill = Mathf.Clamp(fill + buttonValue, 0, 100);
             }
-            else if (Input.GetKeyUp(KeyCode.Space))
+            else if (!inputs.SingleButtonMash.Mash.WasReleasedThisFrame())
             {
-                pressed = false;
+                //pressed = false;
             }
 
             //Take decrease value multiplied by the difficulty meter from the fill over time

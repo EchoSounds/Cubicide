@@ -52,7 +52,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
             ]
         },
         {
-            ""name"": ""ButtonMash"",
+            ""name"": ""SingleButtonMash"",
             ""id"": ""76833813-b49c-4436-8842-acad1a300357"",
             ""actions"": [
                 {
@@ -89,6 +89,56 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""MultiButtonMash"",
+            ""id"": ""480213d7-6eaa-4ef2-b441-6ef658736187"",
+            ""actions"": [
+                {
+                    ""name"": ""Mash"",
+                    ""type"": ""Button"",
+                    ""id"": ""622571df-d7bf-4f3a-a1cc-389bba1c4859"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""ebe12dca-da86-462e-bbe8-cf852adae87c"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Mash"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""bf3c8b8d-95b4-49ac-a85a-8f28e5f005ad"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Mash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""d51df416-8ee0-4b0a-ba66-d918c278564e"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Mash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -96,9 +146,12 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         // Mouse
         m_Mouse = asset.FindActionMap("Mouse", throwIfNotFound: true);
         m_Mouse_MouseDelta = m_Mouse.FindAction("Mouse Delta", throwIfNotFound: true);
-        // ButtonMash
-        m_ButtonMash = asset.FindActionMap("ButtonMash", throwIfNotFound: true);
-        m_ButtonMash_Mash = m_ButtonMash.FindAction("Mash", throwIfNotFound: true);
+        // SingleButtonMash
+        m_SingleButtonMash = asset.FindActionMap("SingleButtonMash", throwIfNotFound: true);
+        m_SingleButtonMash_Mash = m_SingleButtonMash.FindAction("Mash", throwIfNotFound: true);
+        // MultiButtonMash
+        m_MultiButtonMash = asset.FindActionMap("MultiButtonMash", throwIfNotFound: true);
+        m_MultiButtonMash_Mash = m_MultiButtonMash.FindAction("Mash", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -188,29 +241,29 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
     }
     public MouseActions @Mouse => new MouseActions(this);
 
-    // ButtonMash
-    private readonly InputActionMap m_ButtonMash;
-    private IButtonMashActions m_ButtonMashActionsCallbackInterface;
-    private readonly InputAction m_ButtonMash_Mash;
-    public struct ButtonMashActions
+    // SingleButtonMash
+    private readonly InputActionMap m_SingleButtonMash;
+    private ISingleButtonMashActions m_SingleButtonMashActionsCallbackInterface;
+    private readonly InputAction m_SingleButtonMash_Mash;
+    public struct SingleButtonMashActions
     {
         private @PlayerInputs m_Wrapper;
-        public ButtonMashActions(@PlayerInputs wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Mash => m_Wrapper.m_ButtonMash_Mash;
-        public InputActionMap Get() { return m_Wrapper.m_ButtonMash; }
+        public SingleButtonMashActions(@PlayerInputs wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Mash => m_Wrapper.m_SingleButtonMash_Mash;
+        public InputActionMap Get() { return m_Wrapper.m_SingleButtonMash; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(ButtonMashActions set) { return set.Get(); }
-        public void SetCallbacks(IButtonMashActions instance)
+        public static implicit operator InputActionMap(SingleButtonMashActions set) { return set.Get(); }
+        public void SetCallbacks(ISingleButtonMashActions instance)
         {
-            if (m_Wrapper.m_ButtonMashActionsCallbackInterface != null)
+            if (m_Wrapper.m_SingleButtonMashActionsCallbackInterface != null)
             {
-                @Mash.started -= m_Wrapper.m_ButtonMashActionsCallbackInterface.OnMash;
-                @Mash.performed -= m_Wrapper.m_ButtonMashActionsCallbackInterface.OnMash;
-                @Mash.canceled -= m_Wrapper.m_ButtonMashActionsCallbackInterface.OnMash;
+                @Mash.started -= m_Wrapper.m_SingleButtonMashActionsCallbackInterface.OnMash;
+                @Mash.performed -= m_Wrapper.m_SingleButtonMashActionsCallbackInterface.OnMash;
+                @Mash.canceled -= m_Wrapper.m_SingleButtonMashActionsCallbackInterface.OnMash;
             }
-            m_Wrapper.m_ButtonMashActionsCallbackInterface = instance;
+            m_Wrapper.m_SingleButtonMashActionsCallbackInterface = instance;
             if (instance != null)
             {
                 @Mash.started += instance.OnMash;
@@ -219,12 +272,49 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
             }
         }
     }
-    public ButtonMashActions @ButtonMash => new ButtonMashActions(this);
+    public SingleButtonMashActions @SingleButtonMash => new SingleButtonMashActions(this);
+
+    // MultiButtonMash
+    private readonly InputActionMap m_MultiButtonMash;
+    private IMultiButtonMashActions m_MultiButtonMashActionsCallbackInterface;
+    private readonly InputAction m_MultiButtonMash_Mash;
+    public struct MultiButtonMashActions
+    {
+        private @PlayerInputs m_Wrapper;
+        public MultiButtonMashActions(@PlayerInputs wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Mash => m_Wrapper.m_MultiButtonMash_Mash;
+        public InputActionMap Get() { return m_Wrapper.m_MultiButtonMash; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(MultiButtonMashActions set) { return set.Get(); }
+        public void SetCallbacks(IMultiButtonMashActions instance)
+        {
+            if (m_Wrapper.m_MultiButtonMashActionsCallbackInterface != null)
+            {
+                @Mash.started -= m_Wrapper.m_MultiButtonMashActionsCallbackInterface.OnMash;
+                @Mash.performed -= m_Wrapper.m_MultiButtonMashActionsCallbackInterface.OnMash;
+                @Mash.canceled -= m_Wrapper.m_MultiButtonMashActionsCallbackInterface.OnMash;
+            }
+            m_Wrapper.m_MultiButtonMashActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Mash.started += instance.OnMash;
+                @Mash.performed += instance.OnMash;
+                @Mash.canceled += instance.OnMash;
+            }
+        }
+    }
+    public MultiButtonMashActions @MultiButtonMash => new MultiButtonMashActions(this);
     public interface IMouseActions
     {
         void OnMouseDelta(InputAction.CallbackContext context);
     }
-    public interface IButtonMashActions
+    public interface ISingleButtonMashActions
+    {
+        void OnMash(InputAction.CallbackContext context);
+    }
+    public interface IMultiButtonMashActions
     {
         void OnMash(InputAction.CallbackContext context);
     }
