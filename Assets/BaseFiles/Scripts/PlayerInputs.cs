@@ -89,6 +89,34 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""TimerQTE"",
+            ""id"": ""93ee31c7-d1f1-40cd-b104-20a175c18289"",
+            ""actions"": [
+                {
+                    ""name"": ""QTE_E"",
+                    ""type"": ""Button"",
+                    ""id"": ""d9f5c474-27ed-42f2-94be-3a84031f1b76"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""aa30975c-7d52-470d-9308-2aafeadc7539"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""QTE_E"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -99,6 +127,9 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         // ButtonMash
         m_ButtonMash = asset.FindActionMap("ButtonMash", throwIfNotFound: true);
         m_ButtonMash_Mash = m_ButtonMash.FindAction("Mash", throwIfNotFound: true);
+        // TimerQTE
+        m_TimerQTE = asset.FindActionMap("TimerQTE", throwIfNotFound: true);
+        m_TimerQTE_QTE_E = m_TimerQTE.FindAction("QTE_E", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -220,6 +251,39 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         }
     }
     public ButtonMashActions @ButtonMash => new ButtonMashActions(this);
+
+    // TimerQTE
+    private readonly InputActionMap m_TimerQTE;
+    private ITimerQTEActions m_TimerQTEActionsCallbackInterface;
+    private readonly InputAction m_TimerQTE_QTE_E;
+    public struct TimerQTEActions
+    {
+        private @PlayerInputs m_Wrapper;
+        public TimerQTEActions(@PlayerInputs wrapper) { m_Wrapper = wrapper; }
+        public InputAction @QTE_E => m_Wrapper.m_TimerQTE_QTE_E;
+        public InputActionMap Get() { return m_Wrapper.m_TimerQTE; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(TimerQTEActions set) { return set.Get(); }
+        public void SetCallbacks(ITimerQTEActions instance)
+        {
+            if (m_Wrapper.m_TimerQTEActionsCallbackInterface != null)
+            {
+                @QTE_E.started -= m_Wrapper.m_TimerQTEActionsCallbackInterface.OnQTE_E;
+                @QTE_E.performed -= m_Wrapper.m_TimerQTEActionsCallbackInterface.OnQTE_E;
+                @QTE_E.canceled -= m_Wrapper.m_TimerQTEActionsCallbackInterface.OnQTE_E;
+            }
+            m_Wrapper.m_TimerQTEActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @QTE_E.started += instance.OnQTE_E;
+                @QTE_E.performed += instance.OnQTE_E;
+                @QTE_E.canceled += instance.OnQTE_E;
+            }
+        }
+    }
+    public TimerQTEActions @TimerQTE => new TimerQTEActions(this);
     public interface IMouseActions
     {
         void OnMouseDelta(InputAction.CallbackContext context);
@@ -227,5 +291,9 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
     public interface IButtonMashActions
     {
         void OnMash(InputAction.CallbackContext context);
+    }
+    public interface ITimerQTEActions
+    {
+        void OnQTE_E(InputAction.CallbackContext context);
     }
 }

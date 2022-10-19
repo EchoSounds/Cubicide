@@ -1,5 +1,5 @@
 {
-    "name": "InputControls",
+    "name": "PlayerInputs",
     "maps": [
         {
             "name": "Mouse",
@@ -63,6 +63,34 @@
                     "processors": "",
                     "groups": "",
                     "action": "Mash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "TimerQTE",
+            "id": "93ee31c7-d1f1-40cd-b104-20a175c18289",
+            "actions": [
+                {
+                    "name": "QTE_E",
+                    "type": "Button",
+                    "id": "d9f5c474-27ed-42f2-94be-3a84031f1b76",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "aa30975c-7d52-470d-9308-2aafeadc7539",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "QTE_E",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
