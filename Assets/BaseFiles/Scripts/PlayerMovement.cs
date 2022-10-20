@@ -6,13 +6,16 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public PlayerInputs controls;
-    //[SerializeField] private bool AllowVerticalMovement;
+    [SerializeField] private bool AllowVerticalMovement;
     [SerializeField] private bool AllowHorizontalMovement;
     [SerializeField] private bool AllowJumping;
     [SerializeField] private float moveSpeed;
+    [SerializeField] private float jumpHeight;
     private float desiredKBInputH;
-    //private float desiredKBInputV;
-    private Vector3 movement;
+    private float desiredKBInputV;
+    private float desiredKBInputJ;
+    private Vector3 movementH;
+    private Vector3 movementV;
     private Vector3 Transform;
 
 
@@ -39,40 +42,65 @@ public class PlayerMovement : MonoBehaviour
         {
             HorizontalMovement();
         }
-       /* if (AllowVerticalMovement == true) 
+        if (AllowVerticalMovement == true) 
         {
             VerticalMovement();
-        } */
+        }
+        if (AllowJumping == true)
+        {
+            Jumping();
+        }
     }
 
     private void HorizontalMovement()
     {
-        desiredKBInputH = (controls.StandardMovement.HorizMove.ReadValue<float>()); // Go to the action mapping and read the Vector2 of that mapping.
+        desiredKBInputH = (controls.StandardMovement.HorizMove.ReadValue<float>()); // Go to the StandardMoivement action map and read the HorizMove Vector3 of that mapping.
 
-        if (desiredKBInputH == 1) 
+        if (desiredKBInputH == 1) // If the key that is pressed is the positive binding
         {
-            movement = new Vector3(0, 0, 1); // Create new Vector 3 for desired movement
+            movementH = new Vector3(0, 0, 1); // Create new Vector 3 for moving up.
         }
-        else if (desiredKBInputH == -1)
+        else if (desiredKBInputH == -1) // If the key that is pressed is the negative binding
         {
-            movement = new Vector3(0, 0, -1); // Create new Vector 3 for desired movement
+            movementH = new Vector3(0, 0, -1); // Create new Vector 3 for moving down.
         }
-        else 
+        else // If neither the positive or negative bindings are being detected
         {
-            movement = new Vector3(0, 0, 0); // Create new Vector 3 for desired movement
+            movementH = new Vector3(0, 0, 0); // Create new Vector 3 for stopping movement.
         }
 
-        gameObject.transform.position += (moveSpeed * movement) * Time.deltaTime; // Times desired movement by speed over the time between the frames then add to object transform
-        Debug.Log(desiredKBInputH);
+        gameObject.transform.position += (moveSpeed * movementH) * Time.deltaTime; // Times desired movement by speed over the time between the frames then add to object transform
+        //Debug.Log(desiredKBInputH);
     }
 
-    /*private void VerticalMovement()
+    private void VerticalMovement()
     {
-        desiredKBInputV = (controls.StandardMovement.VertMove.ReadValue<float>()); // Go to the action mapping and read the Vector2 of that mapping.
+        desiredKBInputV = (controls.StandardMovement.VertMove.ReadValue<float>()); // Go to the StandardMoivement action map and read the VertMove Vector3 of that mapping.
 
-        movement = new Vector3(desiredKBInputV.x, 0, 0); // Create new Vector 3 for desired movement
+        if (desiredKBInputV == 1) // If the key that is pressed is the positive binding
+        {
+            movementV = new Vector3(1, 0, 0); // Create new Vector 3 for moving right.
+        }
+        else if (desiredKBInputV == -1) // If the key that is pressed is the negative binding
+        {
+            movementV = new Vector3(-1, 0, 0); // Create new Vector 3 for moving left.
+        }
+        else // If neither the positive or negative bindings are being detected
+        {
+            movementV = new Vector3(0, 0, 0); // Create new Vector 3 for stopping movement.
+        }
 
-        gameObject.transform.position += (moveSpeed * movement) * Time.deltaTime; // Times desired movement by speed over the time between the frames then add to object transform
-        Debug.Log(desiredKBInputV);
-    }*/
+        gameObject.transform.position += (moveSpeed * movementV) * Time.deltaTime; // Times desired movement by speed over the time between the frames then add to object transform
+        //Debug.Log(desiredKBInputV);
+    }
+
+    private void Jumping()
+    {
+        desiredKBInputJ = (controls.StandardMovement.Jump.ReadValue<float>()); // Go to the StandardMoivement action map and read the HorizMove Vector3 of that mapping.
+
+        if (desiredKBInputJ == 1 && Mathf.Abs(this.GetComponent<Rigidbody>().velocity.y) < 0.001f) // If the key that is pressed is the 
+        {
+            this.GetComponent<Rigidbody>().velocity += Vector3.up * this.jumpHeight;
+        }
+    }
 }
