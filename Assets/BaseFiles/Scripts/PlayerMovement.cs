@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
 {
     public PlayerInputs controls;
@@ -17,6 +18,8 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 movementH;
     private Vector3 movementV;
     private Vector3 Transform;
+    private float mass;
+    private Rigidbody rb;
 
 
     // Start is called before the first frame update
@@ -34,6 +37,8 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         controls = new PlayerInputs();
+        rb = GetComponent<Rigidbody>();
+        mass = rb.mass;
     }
 
     private void Update()
@@ -70,7 +75,6 @@ public class PlayerMovement : MonoBehaviour
         }
 
         gameObject.transform.position += (moveSpeed * movementH) * Time.deltaTime; // Times desired movement by speed over the time between the frames then add to object transform
-        //Debug.Log(desiredKBInputH);
     }
 
     private void VerticalMovement()
@@ -91,7 +95,8 @@ public class PlayerMovement : MonoBehaviour
         }
 
         gameObject.transform.position += (moveSpeed * movementV) * Time.deltaTime; // Times desired movement by speed over the time between the frames then add to object transform
-        //Debug.Log(desiredKBInputV);
+        
+
     }
 
     private void Jumping()
@@ -100,7 +105,15 @@ public class PlayerMovement : MonoBehaviour
 
         if (desiredKBInputJ == 1 && Mathf.Abs(this.GetComponent<Rigidbody>().velocity.y) < 0.001f) // If the key that is pressed is the 
         {
-            this.GetComponent<Rigidbody>().velocity += Vector3.up * this.jumpHeight;
+            this.GetComponent<Rigidbody>().velocity += Vector3.up * this.jumpHeight / mass;
+        }
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Wall")
+        {
+            Debug.Log("Collided");
         }
     }
 }
