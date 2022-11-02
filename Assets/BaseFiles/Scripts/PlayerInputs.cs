@@ -117,6 +117,82 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Buttons"",
+            ""id"": ""e5f49b21-e3bf-4161-b42b-3d619643f898"",
+            ""actions"": [
+                {
+                    ""name"": ""Button1"",
+                    ""type"": ""Button"",
+                    ""id"": ""4e706623-2ff8-485a-9788-a17206d070c7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Button2"",
+                    ""type"": ""Button"",
+                    ""id"": ""30016451-1f13-460a-8eab-c0a1f04fa9a1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""a44e6365-c6af-4abe-ae07-bdc5c408653b"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Button1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""481ca81f-4d91-4814-9d31-3b1aeceb35dc"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Button2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Space"",
+            ""id"": ""3436b5c0-f1c1-486e-af0c-915f63f72994"",
+            ""actions"": [
+                {
+                    ""name"": ""Space"",
+                    ""type"": ""Button"",
+                    ""id"": ""2202cf48-bc2d-4a9a-8807-4a93347971e9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""a01e97ef-711f-4840-98da-a0a0b789e76d"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Space"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -130,6 +206,13 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         // TimerQTE
         m_TimerQTE = asset.FindActionMap("TimerQTE", throwIfNotFound: true);
         m_TimerQTE_QTE_E = m_TimerQTE.FindAction("QTE_E", throwIfNotFound: true);
+        // Buttons
+        m_Buttons = asset.FindActionMap("Buttons", throwIfNotFound: true);
+        m_Buttons_Button1 = m_Buttons.FindAction("Button1", throwIfNotFound: true);
+        m_Buttons_Button2 = m_Buttons.FindAction("Button2", throwIfNotFound: true);
+        // Space
+        m_Space = asset.FindActionMap("Space", throwIfNotFound: true);
+        m_Space_Space = m_Space.FindAction("Space", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -284,6 +367,80 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         }
     }
     public TimerQTEActions @TimerQTE => new TimerQTEActions(this);
+
+    // Buttons
+    private readonly InputActionMap m_Buttons;
+    private IButtonsActions m_ButtonsActionsCallbackInterface;
+    private readonly InputAction m_Buttons_Button1;
+    private readonly InputAction m_Buttons_Button2;
+    public struct ButtonsActions
+    {
+        private @PlayerInputs m_Wrapper;
+        public ButtonsActions(@PlayerInputs wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Button1 => m_Wrapper.m_Buttons_Button1;
+        public InputAction @Button2 => m_Wrapper.m_Buttons_Button2;
+        public InputActionMap Get() { return m_Wrapper.m_Buttons; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(ButtonsActions set) { return set.Get(); }
+        public void SetCallbacks(IButtonsActions instance)
+        {
+            if (m_Wrapper.m_ButtonsActionsCallbackInterface != null)
+            {
+                @Button1.started -= m_Wrapper.m_ButtonsActionsCallbackInterface.OnButton1;
+                @Button1.performed -= m_Wrapper.m_ButtonsActionsCallbackInterface.OnButton1;
+                @Button1.canceled -= m_Wrapper.m_ButtonsActionsCallbackInterface.OnButton1;
+                @Button2.started -= m_Wrapper.m_ButtonsActionsCallbackInterface.OnButton2;
+                @Button2.performed -= m_Wrapper.m_ButtonsActionsCallbackInterface.OnButton2;
+                @Button2.canceled -= m_Wrapper.m_ButtonsActionsCallbackInterface.OnButton2;
+            }
+            m_Wrapper.m_ButtonsActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Button1.started += instance.OnButton1;
+                @Button1.performed += instance.OnButton1;
+                @Button1.canceled += instance.OnButton1;
+                @Button2.started += instance.OnButton2;
+                @Button2.performed += instance.OnButton2;
+                @Button2.canceled += instance.OnButton2;
+            }
+        }
+    }
+    public ButtonsActions @Buttons => new ButtonsActions(this);
+
+    // Space
+    private readonly InputActionMap m_Space;
+    private ISpaceActions m_SpaceActionsCallbackInterface;
+    private readonly InputAction m_Space_Space;
+    public struct SpaceActions
+    {
+        private @PlayerInputs m_Wrapper;
+        public SpaceActions(@PlayerInputs wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Space => m_Wrapper.m_Space_Space;
+        public InputActionMap Get() { return m_Wrapper.m_Space; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(SpaceActions set) { return set.Get(); }
+        public void SetCallbacks(ISpaceActions instance)
+        {
+            if (m_Wrapper.m_SpaceActionsCallbackInterface != null)
+            {
+                @Space.started -= m_Wrapper.m_SpaceActionsCallbackInterface.OnSpace;
+                @Space.performed -= m_Wrapper.m_SpaceActionsCallbackInterface.OnSpace;
+                @Space.canceled -= m_Wrapper.m_SpaceActionsCallbackInterface.OnSpace;
+            }
+            m_Wrapper.m_SpaceActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Space.started += instance.OnSpace;
+                @Space.performed += instance.OnSpace;
+                @Space.canceled += instance.OnSpace;
+            }
+        }
+    }
+    public SpaceActions @Space => new SpaceActions(this);
     public interface IMouseActions
     {
         void OnMouseDelta(InputAction.CallbackContext context);
@@ -295,5 +452,14 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
     public interface ITimerQTEActions
     {
         void OnQTE_E(InputAction.CallbackContext context);
+    }
+    public interface IButtonsActions
+    {
+        void OnButton1(InputAction.CallbackContext context);
+        void OnButton2(InputAction.CallbackContext context);
+    }
+    public interface ISpaceActions
+    {
+        void OnSpace(InputAction.CallbackContext context);
     }
 }

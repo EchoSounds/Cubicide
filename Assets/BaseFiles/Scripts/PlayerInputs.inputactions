@@ -95,6 +95,82 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Buttons",
+            "id": "e5f49b21-e3bf-4161-b42b-3d619643f898",
+            "actions": [
+                {
+                    "name": "Button1",
+                    "type": "Button",
+                    "id": "4e706623-2ff8-485a-9788-a17206d070c7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Button2",
+                    "type": "Button",
+                    "id": "30016451-1f13-460a-8eab-c0a1f04fa9a1",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "a44e6365-c6af-4abe-ae07-bdc5c408653b",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Button1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "481ca81f-4d91-4814-9d31-3b1aeceb35dc",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Button2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Space",
+            "id": "3436b5c0-f1c1-486e-af0c-915f63f72994",
+            "actions": [
+                {
+                    "name": "Space",
+                    "type": "Button",
+                    "id": "2202cf48-bc2d-4a9a-8807-4a93347971e9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "a01e97ef-711f-4840-98da-a0a0b789e76d",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Space",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []
