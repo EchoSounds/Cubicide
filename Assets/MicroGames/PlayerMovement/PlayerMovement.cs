@@ -7,43 +7,45 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public PlayerInputs controls;
-    [SerializeField] private bool AllowVerticalMovement;
-    [SerializeField] private bool AllowHorizontalMovement;
-    [SerializeField] private bool AllowJumping;
-    [SerializeField] private bool isJumpingRestricted;
-    [SerializeField] private float moveSpeed;
-    [SerializeField] private float jumpHeight;
-    private float desiredKBInputH;
-    private float desiredKBInputV;
-    private float desiredKBInputJ;
-    private Vector3 movementH;
-    private Vector3 movementV;
-    private Vector3 Transform;
-    private float mass;
-    private Rigidbody rb;
-    private bool isInAir = false;
+    [SerializeField] protected private bool AllowVerticalMovement;
+    [SerializeField] protected private bool AllowHorizontalMovement;
+    [SerializeField] protected private bool AllowJumping;
+    [SerializeField] protected private bool isJumpingRestricted;
+    /*[SerializeField] protected private bool BoundaryEnabled;
+    [SerializeField] protected private Vector3 Boundary;*/
+    [SerializeField] protected private float moveSpeed;
+    [SerializeField] protected private float jumpHeight;
+    protected private float desiredKBInputH;
+    protected private float desiredKBInputV;
+    protected private float desiredKBInputJ;
+    protected private Vector3 movementH;
+    protected private Vector3 movementV;
+    protected private Vector3 Transform;
+    protected private float mass;
+    protected private Rigidbody rb;
+    protected private bool isInAir = false;
 
 
     // Start is called before the first frame update
 
-    private void OnEnable()
+    protected private void OnEnable()
     {
         controls.Enable();
     }
 
-    private void OnDisable()
+    protected private void OnDisable()
     {
         controls.Disable();
     }
 
-    private void Awake()
+    protected private void Awake()
     {
         controls = new PlayerInputs();
         rb = GetComponent<Rigidbody>();
         mass = rb.mass;
     }
 
-    private void Update()
+    protected private void Update()
     {
         if (AllowHorizontalMovement == true) 
         {
@@ -62,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void HorizontalMovement()
+    protected private void HorizontalMovement()
     {
         desiredKBInputH = (controls.StandardMovement.HorizMove.ReadValue<float>()); // Go to the StandardMoivement action map and read the HorizMove Vector3 of that mapping.
 
@@ -82,7 +84,7 @@ public class PlayerMovement : MonoBehaviour
         gameObject.transform.position += (moveSpeed * movementH) * Time.deltaTime; // Times desired movement by speed over the time between the frames then add to object transform
     }
 
-    private void VerticalMovement()
+    protected private void VerticalMovement()
     {
         desiredKBInputV = (controls.StandardMovement.VertMove.ReadValue<float>()); // Go to the StandardMoivement action map and read the VertMove Vector3 of that mapping.
 
@@ -99,12 +101,12 @@ public class PlayerMovement : MonoBehaviour
             movementV = new Vector3(0, 0, 0); // Create new Vector 3 for stopping movement.
         }
 
-        gameObject.transform.position += (moveSpeed * movementV) * Time.deltaTime; // Times desired movement by speed over the time between the frames then add to object transform
+        gameObject.transform.position += (moveSpeed * movementV) * Time.deltaTime/* + CheckBoundary(gameObject.transform.position)*/; // Times desired movement by speed over the time between the frames then add to object transform
         
 
     }
 
-    private void Jumping()
+    protected private void Jumping()
     {
         desiredKBInputJ = (controls.StandardMovement.Jump.ReadValue<float>()); // Go to the StandardMoivement action map and read the HorizMove Vector3 of that mapping.
 
@@ -131,4 +133,30 @@ public class PlayerMovement : MonoBehaviour
         }
 
     }
+
+    /*Vector3 CheckBoundary(Vector3 pos) 
+    {
+        if (BoundaryEnabled == true) 
+        {
+            if (pos.x > Boundary.x)
+            return new Vector3(1, 0, 0);
+            Debug.Log("Hit right boundary.");
+
+            if (pos.x < -Boundary.x)
+            return new Vector3(-1, 0, 0);
+            Debug.Log("Hit left boundary.");
+
+            if (pos.y > Boundary.y)
+            return new Vector3(0, 1, 0);
+
+            if (pos.y < -Boundary.y)
+            return new Vector3(0, -1, 0);
+
+            return pos;
+        }
+        else 
+        {
+            return pos;
+        }
+    }*/
 }
