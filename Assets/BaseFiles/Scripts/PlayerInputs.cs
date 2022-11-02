@@ -193,6 +193,118 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""StandardMovement"",
+            ""id"": ""cbd146cd-8752-4bb6-821c-203424e03903"",
+            ""actions"": [
+                {
+                    ""name"": ""HorizMove"",
+                    ""type"": ""Button"",
+                    ""id"": ""da7c358e-2e48-44b8-ad62-e5c7a08e1dce"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""VertMove"",
+                    ""type"": ""Button"",
+                    ""id"": ""09e2dafe-b289-4e34-acce-fd876dadd8dc"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Jump"",
+                    ""type"": ""Button"",
+                    ""id"": ""8a82a05e-a890-4d10-b2a9-cb85e3b34017"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""5d32ace2-dac5-4706-b273-0fcbf460c827"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""HorizMove"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""06557b55-2113-4ea1-be30-94d232be0e4f"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""HorizMove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""58f7647a-a02c-4aa0-bacd-14e1c2f44d28"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""HorizMove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e2cb7327-977e-42ec-b2eb-a91412fe763f"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""cc1c3e55-4219-4cfd-8fb9-e5a62e082923"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""VertMove"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""4ab4d882-dcda-4acc-913e-de612fef8b24"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""VertMove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""8bd32873-9039-4b2d-8eea-d59e42d140f6"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""VertMove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -213,6 +325,11 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         // Space
         m_Space = asset.FindActionMap("Space", throwIfNotFound: true);
         m_Space_Space = m_Space.FindAction("Space", throwIfNotFound: true);
+        // StandardMovement
+        m_StandardMovement = asset.FindActionMap("StandardMovement", throwIfNotFound: true);
+        m_StandardMovement_HorizMove = m_StandardMovement.FindAction("HorizMove", throwIfNotFound: true);
+        m_StandardMovement_VertMove = m_StandardMovement.FindAction("VertMove", throwIfNotFound: true);
+        m_StandardMovement_Jump = m_StandardMovement.FindAction("Jump", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -441,6 +558,55 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         }
     }
     public SpaceActions @Space => new SpaceActions(this);
+
+    // StandardMovement
+    private readonly InputActionMap m_StandardMovement;
+    private IStandardMovementActions m_StandardMovementActionsCallbackInterface;
+    private readonly InputAction m_StandardMovement_HorizMove;
+    private readonly InputAction m_StandardMovement_VertMove;
+    private readonly InputAction m_StandardMovement_Jump;
+    public struct StandardMovementActions
+    {
+        private @PlayerInputs m_Wrapper;
+        public StandardMovementActions(@PlayerInputs wrapper) { m_Wrapper = wrapper; }
+        public InputAction @HorizMove => m_Wrapper.m_StandardMovement_HorizMove;
+        public InputAction @VertMove => m_Wrapper.m_StandardMovement_VertMove;
+        public InputAction @Jump => m_Wrapper.m_StandardMovement_Jump;
+        public InputActionMap Get() { return m_Wrapper.m_StandardMovement; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(StandardMovementActions set) { return set.Get(); }
+        public void SetCallbacks(IStandardMovementActions instance)
+        {
+            if (m_Wrapper.m_StandardMovementActionsCallbackInterface != null)
+            {
+                @HorizMove.started -= m_Wrapper.m_StandardMovementActionsCallbackInterface.OnHorizMove;
+                @HorizMove.performed -= m_Wrapper.m_StandardMovementActionsCallbackInterface.OnHorizMove;
+                @HorizMove.canceled -= m_Wrapper.m_StandardMovementActionsCallbackInterface.OnHorizMove;
+                @VertMove.started -= m_Wrapper.m_StandardMovementActionsCallbackInterface.OnVertMove;
+                @VertMove.performed -= m_Wrapper.m_StandardMovementActionsCallbackInterface.OnVertMove;
+                @VertMove.canceled -= m_Wrapper.m_StandardMovementActionsCallbackInterface.OnVertMove;
+                @Jump.started -= m_Wrapper.m_StandardMovementActionsCallbackInterface.OnJump;
+                @Jump.performed -= m_Wrapper.m_StandardMovementActionsCallbackInterface.OnJump;
+                @Jump.canceled -= m_Wrapper.m_StandardMovementActionsCallbackInterface.OnJump;
+            }
+            m_Wrapper.m_StandardMovementActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @HorizMove.started += instance.OnHorizMove;
+                @HorizMove.performed += instance.OnHorizMove;
+                @HorizMove.canceled += instance.OnHorizMove;
+                @VertMove.started += instance.OnVertMove;
+                @VertMove.performed += instance.OnVertMove;
+                @VertMove.canceled += instance.OnVertMove;
+                @Jump.started += instance.OnJump;
+                @Jump.performed += instance.OnJump;
+                @Jump.canceled += instance.OnJump;
+            }
+        }
+    }
+    public StandardMovementActions @StandardMovement => new StandardMovementActions(this);
     public interface IMouseActions
     {
         void OnMouseDelta(InputAction.CallbackContext context);
@@ -461,5 +627,11 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
     public interface ISpaceActions
     {
         void OnSpace(InputAction.CallbackContext context);
+    }
+    public interface IStandardMovementActions
+    {
+        void OnHorizMove(InputAction.CallbackContext context);
+        void OnVertMove(InputAction.CallbackContext context);
+        void OnJump(InputAction.CallbackContext context);
     }
 }
