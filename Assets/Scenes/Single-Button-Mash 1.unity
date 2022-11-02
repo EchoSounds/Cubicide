@@ -609,7 +609,7 @@ MonoBehaviour:
   fillBar: {fileID: 1187345228}
   timerText: {fileID: 1202665886}
   timeToComplete: 15
-  difficultyMultiplier: 1.5
+  difficultyMultiplier: 5
   decreaseValue: 1
   buttonValue: 2.5
 --- !u!114 &1187345228
