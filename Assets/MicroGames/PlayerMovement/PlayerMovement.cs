@@ -108,7 +108,7 @@ public class PlayerMovement : MonoBehaviour
     {
         desiredKBInputJ = (controls.StandardMovement.Jump.ReadValue<float>()); // Go to the StandardMoivement action map and read the HorizMove Vector3 of that mapping.
 
-        if (desiredKBInputJ == 1 && Mathf.Abs(this.GetComponent<Rigidbody>().velocity.y) < 0.000001f) // If the key that is pressed is the 
+        if (desiredKBInputJ == 1 && Mathf.Abs(this.GetComponent<Rigidbody>().velocity.y) < 0.001f) // If the key that is pressed is the 
         {
             this.GetComponent<Rigidbody>().velocity += Vector3.up * this.jumpHeight / mass;
             if(isJumpingRestricted)
