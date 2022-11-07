@@ -10,6 +10,8 @@ public class FarmerMovement : PlayerMovement
     [SerializeField] private TextMeshProUGUI winLoseText;
     [SerializeField] private GameTimer gameTimer;
     [SerializeField] private float textStayTime;
+    private bool isFacingRight = true;
+    private Transform farmerSprite;
 
     public void StartOfGameEvents()
     {
@@ -27,6 +29,36 @@ public class FarmerMovement : PlayerMovement
         AllowVerticalMovement = true;
         AllowJumping = true;
         gameTimer.StopTimer = false;
+    }
+
+    private void FixedUpdate()
+    {
+        farmerSprite = this.transform.Find("FarmerSprite");
+
+        if (desiredKBInputV == 1) // If the key that is pressed is the positive binding
+        {
+            if (isFacingRight == false)
+            {
+                farmerSprite.localScale = new Vector3(farmerSprite.transform.localScale.x, farmerSprite.transform.localScale.y, farmerSprite.transform.localScale.z);
+                isFacingRight = true;
+            }
+            else if (isFacingRight == true)
+            {
+                farmerSprite.localScale = new Vector3(farmerSprite.transform.localScale.x, farmerSprite.transform.localScale.y, farmerSprite.transform.localScale.z);
+            }
+        }
+        else if (desiredKBInputV == -1) // If the key that is pressed is the negative binding
+        {
+            if (isFacingRight == true)
+            {
+                farmerSprite.localScale = new Vector3(-farmerSprite.transform.localScale.x, farmerSprite.transform.localScale.y, farmerSprite.transform.localScale.z);
+                isFacingRight = false;
+            }
+            else if (isFacingRight == false)
+            {
+                farmerSprite.localScale = new Vector3(-farmerSprite.transform.localScale.x, farmerSprite.transform.localScale.y, farmerSprite.transform.localScale.z);
+            }
+        }
     }
 
     /* Vector3 CheckBoundary(Vector3 pos) 
