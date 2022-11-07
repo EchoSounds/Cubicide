@@ -2,19 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
 {
     public PlayerInputs controls;
+
+    [Header("Enable/Disable Movement Controls")]
     [SerializeField] protected private bool AllowVerticalMovement;
     [SerializeField] protected private bool AllowHorizontalMovement;
     [SerializeField] protected private bool AllowJumping;
     [SerializeField] protected private bool isJumpingRestricted;
     /*[SerializeField] protected private bool BoundaryEnabled;
     [SerializeField] protected private Vector3 Boundary;*/
+
+    [Header("Movement Speed/Power")]
     [SerializeField] protected private float moveSpeed;
     [SerializeField] protected private float jumpHeight;
+
+    [Header("Unity Events")]
+    [SerializeField] protected private UnityEvent gameBeginEvents;
+    [SerializeField] protected private UnityEvent goalConsequence;
+
     protected private float desiredKBInputH;
     protected private float desiredKBInputV;
     protected private float desiredKBInputJ;
@@ -43,6 +53,7 @@ public class PlayerMovement : MonoBehaviour
         controls = new PlayerInputs();
         rb = GetComponent<Rigidbody>();
         mass = rb.mass;
+        gameBeginEvents.Invoke();
     }
 
     protected private void Update()
@@ -131,7 +142,16 @@ public class PlayerMovement : MonoBehaviour
         {
             isInAir = false;
         }
+    }
 
+    // Function calls the goalConsequence event if a trigger tagged as GoalTrigger is entered.
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "GoalTrigger") // If the collider in question is tagged as "GoalTrigger"
+        {
+            goalConsequence.Invoke(); // Invoke the Goal Consequence event.
+            Debug.Log("Touched goal."); // Send string to debug log.
+        }
     }
 
     /*Vector3 CheckBoundary(Vector3 pos) 
