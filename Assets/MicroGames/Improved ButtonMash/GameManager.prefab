@@ -709,22 +709,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb7714e9022f7034d8b63248c319338d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BarOrCount: 1
+  timeToComplete: 15
+  buttonValue: 2.5
+  decreaseValue: 1
+  difficultyMultiplier: 5
+  ButtonCount: 30
+  aButton:
+    m_PersistentCalls:
+      m_Calls: []
+  dButton:
+    m_PersistentCalls:
+      m_Calls: []
+  winState:
+    m_PersistentCalls:
+      m_Calls: []
+  loseState:
+    m_PersistentCalls:
+      m_Calls: []
   fillBar: {fileID: 1520595729738811862}
   barOutline: {fileID: 1520595728863453768}
   num1: {fileID: 1520595728056911794}
   num2: {fileID: 1520595728199771287}
   timerText: {fileID: 1520595727708574176}
-  BarOrCount: 1
   A: {fileID: 1520595729303982135}
   AC: {fileID: 1520595727638294252}
   D: {fileID: 1520595728343125470}
   DC: {fileID: 1520595728286448575}
   S: {fileID: 1520595728781535344}
   keyCapCovers:
-  - {fileID: 21300000, guid: 23a3b31826348ce46924d6940d51856b, type: 3}
-  - {fileID: 21300000, guid: 73f6c01859efcef408b7b0fa60239278, type: 3}
-  - {fileID: 21300000, guid: 4d4b33e3ea1c35944b008e77f2fa4987, type: 3}
-  - {fileID: 21300000, guid: b6f89e7e70119c748a678aee739a9139, type: 3}
+  - {fileID: 21300000, guid: 125e51bd6f9a54b4a9edcc1d5a6a1fcc, type: 3}
+  - {fileID: 21300000, guid: 299ea2dea7bf46e42a87978dfa0570c8, type: 3}
+  - {fileID: 21300000, guid: 727574d48f7ffeb46816b4d96154793f, type: 3}
+  - {fileID: 21300000, guid: 5d0456ba7491f1f4a8e8cea5d4a5bda0, type: 3}
   numCaps:
   - {fileID: 3065341204480111528, guid: ffa8f09c12a29224bb37f3a528a9d475, type: 3}
   - {fileID: 21300000, guid: c174efe3355649141a967aad64878829, type: 3}
@@ -737,11 +754,6 @@ MonoBehaviour:
   - {fileID: 1549656501535458392, guid: ffa8f09c12a29224bb37f3a528a9d475, type: 3}
   - {fileID: -3880333041301863497, guid: ffa8f09c12a29224bb37f3a528a9d475, type: 3}
   splitTime: 
-  buttonValue: 2.5
-  decreaseValue: 1
-  difficultyMultiplier: 5
-  ButtonCount: 30
-  timeToComplete: 15
 --- !u!1 &1520595728863453770
 GameObject:
   m_ObjectHideFlags: 0
