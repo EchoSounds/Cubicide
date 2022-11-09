@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Events;
+
 
 public class MultiButtonMash : MonoBehaviour
 {
     private bool playing = true;
     private float fill = 100f;
-    private float inputMash,desiredInputMash;
+    private float inputMash, desiredInputMash;
+    [SerializeField] private UnityEvent OnPass;
+    [SerializeField] private UnityEvent OnFail;
 
     public PlayerInputs inputs;
     [SerializeField]
@@ -91,7 +95,9 @@ public class MultiButtonMash : MonoBehaviour
 
         if (fill <= 0) //Fail State
         {
+
             Debug.Log("Get Gud");
+            OnFail.Invoke();
             playing = false;
 
             AC.sprite = keyCapCovers[0];
@@ -102,6 +108,7 @@ public class MultiButtonMash : MonoBehaviour
         else if (remainingTime <= 0) //Win State
         {
             Debug.Log("You Win");
+            OnPass.Invoke();
             playing = false;
 
             AC.sprite = keyCapCovers[0];
