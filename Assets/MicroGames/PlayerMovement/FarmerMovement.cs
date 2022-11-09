@@ -10,7 +10,9 @@ public class FarmerMovement : PlayerMovement
     [SerializeField] private TextMeshProUGUI winLoseText;
     [SerializeField] private GameTimer gameTimer;
     [SerializeField] private float textStayTime;
-    private bool isFacingRight = true;
+    [SerializeField] private bool isFacingRight = true;
+    [SerializeField] private GameObject horseSprite;
+    [SerializeField] private Material healthyHorse;
     private Transform farmerSprite;
 
     public void StartOfGameEvents()
@@ -39,25 +41,30 @@ public class FarmerMovement : PlayerMovement
         {
             if (isFacingRight == false)
             {
-                farmerSprite.localScale = new Vector3(farmerSprite.transform.localScale.x, farmerSprite.transform.localScale.y, farmerSprite.transform.localScale.z);
+                farmerSprite.localScale = new Vector3(1, farmerSprite.transform.localScale.y, farmerSprite.transform.localScale.z);
                 isFacingRight = true;
+                return;
             }
             else if (isFacingRight == true)
             {
-                farmerSprite.localScale = new Vector3(farmerSprite.transform.localScale.x, farmerSprite.transform.localScale.y, farmerSprite.transform.localScale.z);
+                return;
             }
+
+            Debug.Log("Pressed Right Key");
         }
         else if (desiredKBInputV == -1) // If the key that is pressed is the negative binding
         {
             if (isFacingRight == true)
             {
-                farmerSprite.localScale = new Vector3(-farmerSprite.transform.localScale.x, farmerSprite.transform.localScale.y, farmerSprite.transform.localScale.z);
+                farmerSprite.localScale = new Vector3(-1, farmerSprite.transform.localScale.y, farmerSprite.transform.localScale.z);
                 isFacingRight = false;
+                return;
             }
             else if (isFacingRight == false)
             {
-                farmerSprite.localScale = new Vector3(-farmerSprite.transform.localScale.x, farmerSprite.transform.localScale.y, farmerSprite.transform.localScale.z);
+                return;
             }
+            Debug.Log("Pressed Left Key");
         }
     }
 
@@ -85,6 +92,7 @@ public class FarmerMovement : PlayerMovement
 
     private IEnumerator TimedTouchHorse()
     {
+        horseSprite.GetComponentInChildren<MeshRenderer>().material = healthyHorse;
         AllowVerticalMovement = false;
         AllowJumping = false;
         gameTimer.StopTimer = true;
