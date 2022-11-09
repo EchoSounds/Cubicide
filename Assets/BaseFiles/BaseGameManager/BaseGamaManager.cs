@@ -13,6 +13,16 @@ public class BaseGamaManager : MonoBehaviour
 
     private SceneLoader sceneLoader;
 
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded();
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded();
+    }
+
     private void Start()
     {
         DontDestroyOnLoad(this);
@@ -28,6 +38,10 @@ public class BaseGamaManager : MonoBehaviour
         }
     }
 
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        sceneLoader = GameObject.FindObjectOfType<SceneLoader>();
+    }
     public void NextScene()
     {
         currTimelineSpot++;

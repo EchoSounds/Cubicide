@@ -902,6 +902,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7314995093596995732, guid: 80c9fd8a606f880488f135c36644aa81, type: 3}
+      propertyPath: sceneTimeline.Array.data[1]
+      value: ImprovedMultiButtonMash
+      objectReference: {fileID: 0}
     - target: {fileID: 7314995093596995733, guid: 80c9fd8a606f880488f135c36644aa81, type: 3}
       propertyPath: m_Name
       value: BaseGamaManager
