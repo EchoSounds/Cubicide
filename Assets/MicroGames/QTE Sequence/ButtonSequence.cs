@@ -8,21 +8,22 @@ using UnityEngine.Events;
 public class ButtonSequence : MonoBehaviour
 {
     public PlayerInputs inputs;
-    public SpriteRenderer keyCap;
-    public SpriteRenderer keyCapCover;
+    [SerializeField] private UnityEvent OnPressSuccess;
+    [SerializeField] private UnityEvent OnPressFailure;
+    [SerializeField] private UnityEvent OnPass;
+    [SerializeField] private UnityEvent OnFail;
+    
 
     [SerializeField] private int sequenceLength, numberOfLoops;
-    private int currKeyNum = 0, currKeyCap;
+    private int currKeyNum = 0;
     [SerializeField] private float waitTime = 1f;
 
     [SerializeField] private string inputValue, desiredValue;
     private bool canInput = true, playing = true;
     [SerializeField] private bool looping;
 
-    [SerializeField] private List<Sprite> keyCaps = new List<Sprite>();
-    [SerializeField] private List<Sprite> keyCapCovers = new List<Sprite>();
-    [SerializeField] private List<string> buttonSequenceCodes = new List<string>();
-    private List<int> buttonSequenceInt = new List<int>();
+
+    [SerializeField] private List<string> buttonSequence = new List<string>();
     private List<string> possibleInputs = new List<string>();
 
     void Awake()
@@ -33,7 +34,6 @@ public class ButtonSequence : MonoBehaviour
     private void Start()
     {
         inputs.ButtonSequenceInputs.Enable();
-        keyCapCover.sprite = keyCapCovers[0];
 
         Initialise();
         GenerateSequence();
@@ -54,30 +54,25 @@ public class ButtonSequence : MonoBehaviour
     }
     private void GenerateSequence()
     {
-        buttonSequenceCodes = new List<string>();
+        buttonSequence = new List<string>();
         currKeyNum = 0;
 
         int valueToAdd = Random.Range(0, possibleInputs.Count);
-        buttonSequenceCodes.Add(possibleInputs[valueToAdd]);
-        buttonSequenceInt.Add(valueToAdd);
+        buttonSequence.Add(possibleInputs[valueToAdd]);
 
-
-        desiredValue = buttonSequenceCodes[0];
+        desiredValue = buttonSequence[0];
 
         for (int i = 1; i < sequenceLength; i++)
         {
             valueToAdd = Random.Range(0, possibleInputs.Count);
 
-            if (possibleInputs[valueToAdd] == buttonSequenceCodes[i - 1])
+            if (possibleInputs[valueToAdd] == buttonSequence[i - 1])
             {
                 valueToAdd = Random.Range(0, possibleInputs.Count);
             }
             
-            buttonSequenceCodes.Add(possibleInputs[valueToAdd]);
-            buttonSequenceInt.Add(valueToAdd);
+            buttonSequence.Add(possibleInputs[valueToAdd]);
         }
-
-        keyCap.sprite = keyCaps[buttonSequenceInt[0]];
     }
     private void PressButtonCheck()
     {
@@ -123,16 +118,42 @@ public class ButtonSequence : MonoBehaviour
             {
                 canInput = false;
                 Debug.Log("WrongButton");
-                FindObjectOfType<AudioManager>().Play("IncorrectButton");
-                keyCapCover.sprite = keyCapCovers[2];
+                OnPressFailure.Invoke();
                 Invoke("IncorrectButton", waitTime);
             }
             else if (inputValue == desiredValue)
             {
-                keyCapCover.sprite = keyCapCovers[1];
-                FindObjectOfType<AudioManager>().Play("CorrectButton");
+                if (currKeyNum == buttonSequence.Count - 1)
+                {
+                       
+
+                    if (looping && numberOfLoops != 1)
+                    {
+                        GenerateSequence();
+                        numberOfLoops--;
+                        return;
+                    } else if (looping && numberOfLoops == 1)
+                    {
+                        Debug.Log("Finished Loop");
+                        OnPass.Invoke();
+                    }
+                    else
+                    {
+                        Debug.Log("Success");
+                        OnPass.Invoke();
+                    }
+
+                    playing = false;
+                    return;
+
+                } else
+                {
+                    currKeyNum++;
+                }
+
+                desiredValue = buttonSequence[currKeyNum];
                 Debug.Log("CorrectButton");
-                Invoke("CorrectButton", 0.2f);
+                OnPressSuccess.Invoke();
             }
             else if (inputValue == "Null")
             {
@@ -143,42 +164,7 @@ public class ButtonSequence : MonoBehaviour
     private void IncorrectButton()
     {
         canInput = true;
-        keyCapCover.sprite = keyCapCovers[0];
         Debug.Log("Cooldown Finished");
-    }
-
-    private void CorrectButton()
-    {
-        if (currKeyNum == buttonSequenceCodes.Count - 1)
-        {
-            keyCapCover.sprite = keyCapCovers[0];
-            FindObjectOfType<AudioManager>().Play("Success");
-            Debug.Log("Success");
-
-            if (looping && numberOfLoops != 1)
-            {
-                GenerateSequence();
-                numberOfLoops--;
-                return;
-            }
-            else if (looping && numberOfLoops == 1)
-            {
-                Debug.Log("Finished Loop");
-            }
-
-            playing = false;
-            keyCap.sprite = keyCaps[6];
-            return;
-
-        }
-        else
-        {
-            currKeyNum++;
-        }
-
-        desiredValue = buttonSequenceCodes[currKeyNum];
-        keyCap.sprite = keyCaps[buttonSequenceInt[currKeyNum]];
-        keyCapCover.sprite = keyCapCovers[0];
     }
 
 }
