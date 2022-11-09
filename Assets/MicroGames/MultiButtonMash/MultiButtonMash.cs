@@ -11,6 +11,10 @@ public class MultiButtonMash : MonoBehaviour
     private float inputMash,desiredInputMash;
 
     public PlayerInputs inputs;
+    [SerializeField]
+    private SpriteRenderer A,AC,D,DC,S;
+
+    [SerializeField] private List<Sprite> keyCapCovers = new List<Sprite>();
 
     private void Awake()
     {
@@ -52,6 +56,7 @@ public class MultiButtonMash : MonoBehaviour
     {
         remainingTime = timeToComplete;
         desiredInputMash = 1f;
+        DC.sprite = keyCapCovers[1];
     }
     private void Update()
     {
@@ -71,6 +76,7 @@ public class MultiButtonMash : MonoBehaviour
             timerText.text = remainingTimeText.ToString();
             if (inputMash == desiredInputMash)
             {
+                FindObjectOfType<AudioManager>().Play("CorrectKey");
                 fill = Mathf.Clamp(fill + buttonValue, 0, 100);
                 ChangeDesiredInputMash();
             }
@@ -87,11 +93,22 @@ public class MultiButtonMash : MonoBehaviour
         {
             Debug.Log("Get Gud");
             playing = false;
+
+            AC.sprite = keyCapCovers[0];
+            DC.sprite = keyCapCovers[0];
+            A.sprite = keyCapCovers[0];
+            D.sprite = keyCapCovers[0];
         }
         else if (remainingTime <= 0) //Win State
         {
             Debug.Log("You Win");
             playing = false;
+
+            AC.sprite = keyCapCovers[0];
+            DC.sprite = keyCapCovers[0];
+            A.sprite = keyCapCovers[0];
+            D.sprite = keyCapCovers[0];
+            S.sprite = keyCapCovers[3];
         }
     }
 
@@ -100,12 +117,21 @@ public class MultiButtonMash : MonoBehaviour
         if (desiredInputMash == 1)
         {
             desiredInputMash = -1;
+            AC.sprite = keyCapCovers[1];
+            DC.sprite = keyCapCovers[0];
         } else if (desiredInputMash == -1)
         {
             desiredInputMash = 1;
+            AC.sprite = keyCapCovers[0];
+            DC.sprite = keyCapCovers[1];
         } else
         {
             return;
         }
+    }
+
+    private void ClearMisspress()
+    {
+
     }
 }
