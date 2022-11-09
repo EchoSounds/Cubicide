@@ -69,184 +69,6 @@
             ]
         },
         {
-            "name": "MultiButtonMash",
-            "id": "480213d7-6eaa-4ef2-b441-6ef658736187",
-            "actions": [
-                {
-                    "name": "Mash",
-                    "type": "Button",
-                    "id": "622571df-d7bf-4f3a-a1cc-389bba1c4859",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "1D Axis",
-                    "id": "ebe12dca-da86-462e-bbe8-cf852adae87c",
-                    "path": "1DAxis",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Mash",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "negative",
-                    "id": "bf3c8b8d-95b4-49ac-a85a-8f28e5f005ad",
-                    "path": "<Keyboard>/a",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Mash",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "positive",
-                    "id": "d51df416-8ee0-4b0a-ba66-d918c278564e",
-                    "path": "<Keyboard>/d",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Mash",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                }
-            ]
-        },
-        {
-            "name": "ButtonSequenceInputs",
-            "id": "a3f3ae89-1f89-4a2b-9bee-1b8c911293bf",
-            "actions": [
-                {
-                    "name": "InputQ",
-                    "type": "Button",
-                    "id": "d4a030b3-8659-43a6-b38d-aa6385b9abd2",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "InputW",
-                    "type": "Button",
-                    "id": "e5994646-4cf2-465d-9a10-2fc3fa9d70af",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "InputE",
-                    "type": "Button",
-                    "id": "63be8e4a-2352-4d50-8140-c4d2640a1867",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "InputA",
-                    "type": "Button",
-                    "id": "01083420-620c-41a0-bab2-45aab1203109",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "InputS",
-                    "type": "Button",
-                    "id": "866437e2-8df6-48bc-98f9-0a2490bd477b",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "InputD",
-                    "type": "Button",
-                    "id": "d0f756fb-b79d-4136-9e1a-73774f977043",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "",
-                    "id": "46f14f30-8fa7-4573-93c3-da0bb6653065",
-                    "path": "<Keyboard>/q",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "InputQ",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "58641c1a-7c25-43cb-be15-b2cc3024d07d",
-                    "path": "<Keyboard>/w",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "InputW",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "4bc748d9-a1db-40ac-98b5-5869473757b5",
-                    "path": "<Keyboard>/e",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "InputE",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "d34a39c2-7bf0-4ab3-b2ba-5995c156a60b",
-                    "path": "<Keyboard>/a",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "InputA",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "52d05f72-d97f-4019-9d16-a551c4ab6e43",
-                    "path": "<Keyboard>/s",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "InputS",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "b86720a6-757c-4cfe-9241-461abf8ed8da",
-                    "path": "<Keyboard>/d",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "InputD",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                }
-            ]
-        },
-        {
             "name": "TimerQTE",
             "id": "93ee31c7-d1f1-40cd-b104-20a175c18289",
             "actions": [
@@ -347,6 +169,56 @@
                     "action": "Space",
                     "isComposite": false,
                     "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "MultiButtonMash",
+            "id": "480213d7-6eaa-4ef2-b441-6ef658736187",
+            "actions": [
+                {
+                    "name": "Mash",
+                    "type": "Button",
+                    "id": "622571df-d7bf-4f3a-a1cc-389bba1c4859",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "1D Axis",
+                    "id": "ebe12dca-da86-462e-bbe8-cf852adae87c",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Mash",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "bf3c8b8d-95b4-49ac-a85a-8f28e5f005ad",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Mash",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "d51df416-8ee0-4b0a-ba66-d918c278564e",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Mash",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         },
