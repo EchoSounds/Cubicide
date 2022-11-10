@@ -40,6 +40,12 @@ public class GameTimer : MonoBehaviour
             TimeUp.Invoke();
         }
 
+        if (timeRemaining > 10 && !StopTimer)
+        {
+            this.GetComponent<TextMeshProUGUI>().color = new Color32(255, 255, 255, 255); // Change the text colour to white
+            TextWhiteRed = false;
+        }
+
         if (this.GetComponent<TextMeshProUGUI>().text == "10")
         {
             this.GetComponent<TextMeshProUGUI>().color = new Color32(255, 0, 0, 255); // Change the text colour to red

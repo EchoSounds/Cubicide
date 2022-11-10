@@ -11,22 +11,28 @@ public class FarmerMovement : PlayerMovement
     [SerializeField] private GameTimer gameTimer;
     [SerializeField] private float textStayTime;
     [SerializeField] private bool isFacingRight = true;
+    private bool isStillPlaying;
     [SerializeField] private GameObject horseSprite;
     [SerializeField] private Material healthyHorse;
     private Transform farmerSprite;
+    [SerializeField] private GameObject farmerSpriteObject;
+    private Animator farmerAnim;
 
     public void StartOfGameEvents()
     {
+        farmerAnim = farmerSpriteObject.GetComponent<Animator>();
         StartCoroutine(TimedStartOfGameEvents());
     }
 
     private IEnumerator TimedStartOfGameEvents()
     {
+        isStillPlaying = false;
         promptText.enabled = true;
         AllowVerticalMovement = false;
         AllowJumping = false;
         gameTimer.StopTimer = true;
         yield return new WaitForSeconds(textStayTime);
+        isStillPlaying = true;
         promptText.enabled = false;
         AllowVerticalMovement = true;
         AllowJumping = true;
@@ -39,31 +45,50 @@ public class FarmerMovement : PlayerMovement
 
         if (desiredKBInputV == 1) // If the key that is pressed is the positive binding
         {
-            if (isFacingRight == false)
+            if (isStillPlaying == true)
             {
-                farmerSprite.localScale = new Vector3(1, farmerSprite.transform.localScale.y, farmerSprite.transform.localScale.z);
-                isFacingRight = true;
-                return;
-            }
-            else if (isFacingRight == true)
-            {
-                return;
-            }
+                farmerAnim.SetTrigger("FarmerHopping");
 
-            Debug.Log("Pressed Right Key");
+                if (isFacingRight == false)
+                {
+                    farmerSprite.localScale = new Vector3(1, farmerSprite.transform.localScale.y, farmerSprite.transform.localScale.z);
+                    isFacingRight = true;
+                    return;
+                }
+                else if (isFacingRight == true)
+                {
+                    return;
+                }
+
+                Debug.Log("Pressed Right Key");
+            }
+            else if (isStillPlaying == false)
+            {
+                farmerAnim.ResetTrigger("FarmerHopping");
+            }
         }
         else if (desiredKBInputV == -1) // If the key that is pressed is the negative binding
         {
-            if (isFacingRight == true)
+            if (isStillPlaying == true)
             {
-                farmerSprite.localScale = new Vector3(-1, farmerSprite.transform.localScale.y, farmerSprite.transform.localScale.z);
-                isFacingRight = false;
-                return;
+                farmerAnim.SetTrigger("FarmerHopping");
+
+                if (isFacingRight == true)
+                {
+                    farmerSprite.localScale = new Vector3(-1, farmerSprite.transform.localScale.y, farmerSprite.transform.localScale.z);
+                    isFacingRight = false;
+                    return;
+                }
+                else if (isFacingRight == false)
+                {
+                    return;
+                }
             }
-            else if (isFacingRight == false)
+            else if (isStillPlaying == false)
             {
-                return;
+                farmerAnim.ResetTrigger("FarmerHopping");
             }
+
             Debug.Log("Pressed Left Key");
         }
     }
@@ -87,6 +112,8 @@ public class FarmerMovement : PlayerMovement
 
     public void TouchHorse()
     {
+        isStillPlaying = false;
+        farmerAnim.SetTrigger("GoalTouched");
         StartCoroutine(TimedTouchHorse());
     }
 

@@ -697,6 +697,7 @@ MonoBehaviour:
   isFacingRight: 1
   horseSprite: {fileID: 1878214959}
   healthyHorse: {fileID: 2100000, guid: 29bf3b74700d7304ea1d6c8ed422a0b8, type: 2}
+  farmerSpriteObject: {fileID: 2032681242}
 --- !u!114 &1132070996 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3820787270769667392, guid: db838f7f7f74c3c4696df68fc8085826, type: 3}
@@ -916,7 +917,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3820787270769667392, guid: db838f7f7f74c3c4696df68fc8085826, type: 3}
       propertyPath: timeRemaining
-      value: 3
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 3820787270769667392, guid: db838f7f7f74c3c4696df68fc8085826, type: 3}
       propertyPath: TimeUp.m_PersistentCalls.m_Calls.Array.size
