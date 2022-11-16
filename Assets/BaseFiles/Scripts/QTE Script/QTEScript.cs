@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Events;
 using TMPro;
 
@@ -42,12 +43,16 @@ public class QTEScript : MonoBehaviour
         timer.text = remainingTime.ToString();
 
         remainingTime = Mathf.Clamp(remainingTime -= Time.deltaTime, 0, 999999);
-        //remainingTime = Mathf.Round(remainingTime * 100f) / 100f;
+        
+        //FOR RONAN - Code to trigger next scene.
         if (remainingTime > 0)
         {
             if (inputs.TimerQTE.QTE_E.WasPerformedThisFrame())
             {
                 timerSuccessState.Invoke();
+
+                //Triggering LoadScene Method.
+                //LoadScene;
             }
             Debug.Log(remainingTime);
         }
