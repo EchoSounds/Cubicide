@@ -561,6 +561,10 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1520595728821395714, guid: cf269d44b1653434396d49639273a1a8, type: 3}
+      propertyPath: numCaps.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: 5f9c68c8c9b66154a8a46d9ad4b8a3db, type: 3}
+    - target: {fileID: 1520595728821395714, guid: cf269d44b1653434396d49639273a1a8, type: 3}
       propertyPath: aButton.m_PersistentCalls.m_Calls.Array.size
       value: 0
       objectReference: {fileID: 0}

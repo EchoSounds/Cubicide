@@ -7,7 +7,7 @@ public class SceneLoader : MonoBehaviour
 {
     [SerializeField] private Animator crossfade;
 
-    private float transitionTime = 0.5f;
+    private float transitionTime = 1f;
     private float cooldown = 1.5f;
 
     private void Update()
@@ -32,6 +32,7 @@ public class SceneLoader : MonoBehaviour
         
         yield return new WaitForSeconds(transitionTime);
         SceneManager.LoadScene(SceneName);
+        crossfade.SetTrigger("Finish");
     }
 
 }

@@ -76,6 +76,13 @@ public class ImprovedButtonMash : MonoBehaviour
 
     private void Start()
     {
+        //for (int i = 0; i < 9; i++)
+        //{
+        //    string spriteName = "Assets/BaseFiles/UIElements/UIAssets/JohnFarmer/KeyboardKeys&MouseSprites/Sprites/KeyboardKeys&Mouse/BlackVariant/Alpha" + i;
+        //    Debug.Log(spriteName);
+        //    numCaps.Add(Resources.Load<Sprite>(spriteName));
+        //}
+
         remainingTime = timeToComplete;
 
         AC.sprite = keyCapCovers[0];
@@ -224,7 +231,7 @@ public class ImprovedButtonMash : MonoBehaviour
         Debug.Log("You Win");
         playing = false;
 
-        winState.Invoke();
+        //winState.Invoke();
 
         AC.sprite = keyCapCovers[0];
         DC.sprite = keyCapCovers[0];
