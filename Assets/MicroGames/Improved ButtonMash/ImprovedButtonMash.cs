@@ -11,7 +11,7 @@ public class ImprovedButtonMash : MonoBehaviour
     //Bools
     [Tooltip("True is Bar Game, False is CountDown Game")]
     [SerializeField] bool BarOrCount = true;
-    bool playing = true;
+    bool playing = false;
 
     //Timer
     [Tooltip("In seconds")]
@@ -76,6 +76,8 @@ public class ImprovedButtonMash : MonoBehaviour
 
     private void Start()
     {
+        Invoke("StartGame", 2);
+
         //for (int i = 0; i < 9; i++)
         //{
         //    string spriteName = "Assets/BaseFiles/UIElements/UIAssets/JohnFarmer/KeyboardKeys&MouseSprites/Sprites/KeyboardKeys&Mouse/BlackVariant/Alpha" + i;
@@ -98,7 +100,11 @@ public class ImprovedButtonMash : MonoBehaviour
             fillBar.gameObject.SetActive(false);
             barOutline.gameObject.SetActive(false);
         }
+    }
 
+    private void StartGame()
+    {
+        playing = true;
     }
 
     private void Update()
@@ -231,7 +237,7 @@ public class ImprovedButtonMash : MonoBehaviour
         Debug.Log("You Win");
         playing = false;
 
-        winState.Invoke();
+        BaseGameManager.LoadScene(1, 2);
 
         AC.sprite = keyCapCovers[0];
         DC.sprite = keyCapCovers[0];
