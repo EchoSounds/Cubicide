@@ -355,6 +355,134 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 }
             ]
+        },
+        {
+            ""name"": ""ButtonSequenceInputs"",
+            ""id"": ""00e7721e-2e5e-479c-a3d8-24c8b21f30da"",
+            ""actions"": [
+                {
+                    ""name"": ""InputQ"",
+                    ""type"": ""Button"",
+                    ""id"": ""de59dc1b-1f66-4639-9d39-02056a14a62a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""InputW"",
+                    ""type"": ""Button"",
+                    ""id"": ""a48f9878-96a1-4bc2-9e66-26c60c89712d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""InputE"",
+                    ""type"": ""Button"",
+                    ""id"": ""a12a8d13-11f3-4d2f-9a13-7f346970719b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""InputA"",
+                    ""type"": ""Button"",
+                    ""id"": ""d6c6d723-7fba-4aa1-abe4-b8be2c61cf09"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""InputS"",
+                    ""type"": ""Button"",
+                    ""id"": ""3aa871d5-0637-42df-ace7-fe3b47f1a489"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""InputD"",
+                    ""type"": ""Button"",
+                    ""id"": ""aa16a6b1-b74f-45aa-a7cf-c2a9015249e1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""aa407225-37ca-4d9c-aaaa-9a2aabca6df5"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""InputQ"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1c08f08e-f920-4381-8f9b-25a68dfc4d3a"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""InputW"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""910bcf7f-66a0-4436-8259-8e52537c6a58"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""InputE"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b99962ea-5b33-4c9e-9040-bffb19ae9a94"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""InputD"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""050cbbc6-9d64-4613-8ea3-42f1673b6692"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""InputS"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""730c7bc5-dc33-4555-afa7-35710be61a9c"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""InputA"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -383,6 +511,14 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         m_StandardMovement_HorizMove = m_StandardMovement.FindAction("HorizMove", throwIfNotFound: true);
         m_StandardMovement_VertMove = m_StandardMovement.FindAction("VertMove", throwIfNotFound: true);
         m_StandardMovement_Jump = m_StandardMovement.FindAction("Jump", throwIfNotFound: true);
+        // ButtonSequenceInputs
+        m_ButtonSequenceInputs = asset.FindActionMap("ButtonSequenceInputs", throwIfNotFound: true);
+        m_ButtonSequenceInputs_InputQ = m_ButtonSequenceInputs.FindAction("InputQ", throwIfNotFound: true);
+        m_ButtonSequenceInputs_InputW = m_ButtonSequenceInputs.FindAction("InputW", throwIfNotFound: true);
+        m_ButtonSequenceInputs_InputE = m_ButtonSequenceInputs.FindAction("InputE", throwIfNotFound: true);
+        m_ButtonSequenceInputs_InputA = m_ButtonSequenceInputs.FindAction("InputA", throwIfNotFound: true);
+        m_ButtonSequenceInputs_InputS = m_ButtonSequenceInputs.FindAction("InputS", throwIfNotFound: true);
+        m_ButtonSequenceInputs_InputD = m_ButtonSequenceInputs.FindAction("InputD", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -693,6 +829,79 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         }
     }
     public StandardMovementActions @StandardMovement => new StandardMovementActions(this);
+
+    // ButtonSequenceInputs
+    private readonly InputActionMap m_ButtonSequenceInputs;
+    private IButtonSequenceInputsActions m_ButtonSequenceInputsActionsCallbackInterface;
+    private readonly InputAction m_ButtonSequenceInputs_InputQ;
+    private readonly InputAction m_ButtonSequenceInputs_InputW;
+    private readonly InputAction m_ButtonSequenceInputs_InputE;
+    private readonly InputAction m_ButtonSequenceInputs_InputA;
+    private readonly InputAction m_ButtonSequenceInputs_InputS;
+    private readonly InputAction m_ButtonSequenceInputs_InputD;
+    public struct ButtonSequenceInputsActions
+    {
+        private @PlayerInputs m_Wrapper;
+        public ButtonSequenceInputsActions(@PlayerInputs wrapper) { m_Wrapper = wrapper; }
+        public InputAction @InputQ => m_Wrapper.m_ButtonSequenceInputs_InputQ;
+        public InputAction @InputW => m_Wrapper.m_ButtonSequenceInputs_InputW;
+        public InputAction @InputE => m_Wrapper.m_ButtonSequenceInputs_InputE;
+        public InputAction @InputA => m_Wrapper.m_ButtonSequenceInputs_InputA;
+        public InputAction @InputS => m_Wrapper.m_ButtonSequenceInputs_InputS;
+        public InputAction @InputD => m_Wrapper.m_ButtonSequenceInputs_InputD;
+        public InputActionMap Get() { return m_Wrapper.m_ButtonSequenceInputs; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(ButtonSequenceInputsActions set) { return set.Get(); }
+        public void SetCallbacks(IButtonSequenceInputsActions instance)
+        {
+            if (m_Wrapper.m_ButtonSequenceInputsActionsCallbackInterface != null)
+            {
+                @InputQ.started -= m_Wrapper.m_ButtonSequenceInputsActionsCallbackInterface.OnInputQ;
+                @InputQ.performed -= m_Wrapper.m_ButtonSequenceInputsActionsCallbackInterface.OnInputQ;
+                @InputQ.canceled -= m_Wrapper.m_ButtonSequenceInputsActionsCallbackInterface.OnInputQ;
+                @InputW.started -= m_Wrapper.m_ButtonSequenceInputsActionsCallbackInterface.OnInputW;
+                @InputW.performed -= m_Wrapper.m_ButtonSequenceInputsActionsCallbackInterface.OnInputW;
+                @InputW.canceled -= m_Wrapper.m_ButtonSequenceInputsActionsCallbackInterface.OnInputW;
+                @InputE.started -= m_Wrapper.m_ButtonSequenceInputsActionsCallbackInterface.OnInputE;
+                @InputE.performed -= m_Wrapper.m_ButtonSequenceInputsActionsCallbackInterface.OnInputE;
+                @InputE.canceled -= m_Wrapper.m_ButtonSequenceInputsActionsCallbackInterface.OnInputE;
+                @InputA.started -= m_Wrapper.m_ButtonSequenceInputsActionsCallbackInterface.OnInputA;
+                @InputA.performed -= m_Wrapper.m_ButtonSequenceInputsActionsCallbackInterface.OnInputA;
+                @InputA.canceled -= m_Wrapper.m_ButtonSequenceInputsActionsCallbackInterface.OnInputA;
+                @InputS.started -= m_Wrapper.m_ButtonSequenceInputsActionsCallbackInterface.OnInputS;
+                @InputS.performed -= m_Wrapper.m_ButtonSequenceInputsActionsCallbackInterface.OnInputS;
+                @InputS.canceled -= m_Wrapper.m_ButtonSequenceInputsActionsCallbackInterface.OnInputS;
+                @InputD.started -= m_Wrapper.m_ButtonSequenceInputsActionsCallbackInterface.OnInputD;
+                @InputD.performed -= m_Wrapper.m_ButtonSequenceInputsActionsCallbackInterface.OnInputD;
+                @InputD.canceled -= m_Wrapper.m_ButtonSequenceInputsActionsCallbackInterface.OnInputD;
+            }
+            m_Wrapper.m_ButtonSequenceInputsActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @InputQ.started += instance.OnInputQ;
+                @InputQ.performed += instance.OnInputQ;
+                @InputQ.canceled += instance.OnInputQ;
+                @InputW.started += instance.OnInputW;
+                @InputW.performed += instance.OnInputW;
+                @InputW.canceled += instance.OnInputW;
+                @InputE.started += instance.OnInputE;
+                @InputE.performed += instance.OnInputE;
+                @InputE.canceled += instance.OnInputE;
+                @InputA.started += instance.OnInputA;
+                @InputA.performed += instance.OnInputA;
+                @InputA.canceled += instance.OnInputA;
+                @InputS.started += instance.OnInputS;
+                @InputS.performed += instance.OnInputS;
+                @InputS.canceled += instance.OnInputS;
+                @InputD.started += instance.OnInputD;
+                @InputD.performed += instance.OnInputD;
+                @InputD.canceled += instance.OnInputD;
+            }
+        }
+    }
+    public ButtonSequenceInputsActions @ButtonSequenceInputs => new ButtonSequenceInputsActions(this);
     public interface IMouseActions
     {
         void OnMouseDelta(InputAction.CallbackContext context);
@@ -723,5 +932,14 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         void OnHorizMove(InputAction.CallbackContext context);
         void OnVertMove(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
+    }
+    public interface IButtonSequenceInputsActions
+    {
+        void OnInputQ(InputAction.CallbackContext context);
+        void OnInputW(InputAction.CallbackContext context);
+        void OnInputE(InputAction.CallbackContext context);
+        void OnInputA(InputAction.CallbackContext context);
+        void OnInputS(InputAction.CallbackContext context);
+        void OnInputD(InputAction.CallbackContext context);
     }
 }
