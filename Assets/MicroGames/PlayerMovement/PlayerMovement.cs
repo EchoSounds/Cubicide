@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
@@ -26,17 +27,17 @@ public class PlayerMovement : MonoBehaviour
 
     // Start is called before the first frame update
 
-    private void OnEnable()
+    protected private void OnEnable()
     {
         controls.Enable();
     }
 
-    private void OnDisable()
+    protected private void OnDisable()
     {
         controls.Disable();
     }
 
-    private void Awake()
+    protected private void Awake()
     {
         controls = new PlayerInputs();
         rb = GetComponent<Rigidbody>();
@@ -44,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
         gameObj = this.gameObject.GetComponent<Rigidbody>();
     }
 
-    private void Update()
+    protected private void Update()
     {
         if (AllowVerticalMovement) 
         {
@@ -111,7 +112,7 @@ public class PlayerMovement : MonoBehaviour
         //gameObject.transform.position += (moveSpeed * movementV) * Time.deltaTime; // Times desired movement by speed over the time between the frames then add to object transform
     }
 
-    private void Jumping()
+    protected private void Jumping()
     {
         desiredKBInputJ = (controls.StandardMovement.Jump.ReadValue<float>()); // Go to the StandardMoivement action map and read the HorizMove Vector3 of that mapping.
 
@@ -137,6 +138,41 @@ public class PlayerMovement : MonoBehaviour
             isInAir = false;
             Debug.Log("Collision!");
         }
-
     }
+
+    // Function calls the goalConsequence event if a trigger tagged as GoalTrigger is entered.
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "GoalTrigger") // If the collider in question is tagged as "GoalTrigger"
+        {
+            goalConsequence.Invoke(); // Invoke the Goal Consequence event.
+            Debug.Log("Touched goal."); // Send string to debug log.
+        }
+    }
+
+    /*Vector3 CheckBoundary(Vector3 pos) 
+    {
+        if (BoundaryEnabled == true) 
+        {
+            if (pos.x > Boundary.x)
+            return new Vector3(1, 0, 0);
+            Debug.Log("Hit right boundary.");
+
+            if (pos.x < -Boundary.x)
+            return new Vector3(-1, 0, 0);
+            Debug.Log("Hit left boundary.");
+
+            if (pos.y > Boundary.y)
+            return new Vector3(0, 1, 0);
+
+            if (pos.y < -Boundary.y)
+            return new Vector3(0, -1, 0);
+
+            return pos;
+        }
+        else 
+        {
+            return pos;
+        }
+    }*/
 }
