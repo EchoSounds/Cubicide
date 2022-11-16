@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private bool AllowVerticalMovement;
     [SerializeField] private bool AllowHorizontalMovement;
     [SerializeField] private bool AllowJumping;
+    [SerializeField] private bool isJumpingRestricted;
     [SerializeField] private float moveSpeed;
     [SerializeField] private float jumpHeight;
     private float desiredKBInputH;
@@ -20,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 Transform;
     private float mass;
     private Rigidbody rb;
+    private bool isInAir = false;
 
 
     // Start is called before the first frame update
@@ -53,7 +55,10 @@ public class PlayerMovement : MonoBehaviour
         }
         if (AllowJumping == true)
         {
-            Jumping();
+            if(!isInAir && isJumpingRestricted || !isJumpingRestricted)
+            {
+                Jumping();
+            }
         }
     }
 
@@ -106,6 +111,10 @@ public class PlayerMovement : MonoBehaviour
         if (desiredKBInputJ == 1 && Mathf.Abs(this.GetComponent<Rigidbody>().velocity.y) < 0.001f) // If the key that is pressed is the 
         {
             this.GetComponent<Rigidbody>().velocity += Vector3.up * this.jumpHeight / mass;
+            if(isJumpingRestricted)
+            {
+                isInAir = true;
+            }
         }
     }
 
@@ -115,5 +124,11 @@ public class PlayerMovement : MonoBehaviour
         {
             Debug.Log("Collided");
         }
+
+        if(collision.gameObject.tag == "floor")
+        {
+            isInAir = false;
+        }
+
     }
 }
