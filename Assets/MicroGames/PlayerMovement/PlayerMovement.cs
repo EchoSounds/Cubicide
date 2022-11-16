@@ -8,22 +8,22 @@ using UnityEngine.Events;
 public class PlayerMovement : MonoBehaviour
 {
     public PlayerInputs controls;
-    [SerializeField] private bool AllowVerticalMovement;
-    [SerializeField] private bool AllowHorizontalMovement;
-    [SerializeField] private bool AllowJumping;
-    [SerializeField] private bool isJumpingRestricted;
-    [SerializeField] private float moveSpeed;
-    [SerializeField] private float jumpHeight;
-    private float desiredKBInputH;
-    private float desiredKBInputV;
-    private float desiredKBInputJ;
-    private Vector3 movementH;
-    private Vector3 movementV;
-    private Vector3 Transform;
-    private float mass;
-    private Rigidbody rb;
-    private bool isInAir = false;
-    private Rigidbody gameObj;
+    [SerializeField] protected bool AllowVerticalMovement;
+    [SerializeField] protected bool AllowHorizontalMovement;
+    [SerializeField] protected bool AllowJumping;
+    [SerializeField] protected bool isJumpingRestricted;
+    [SerializeField] protected float moveSpeed;
+    [SerializeField] protected float jumpHeight;
+    protected float desiredKBInputH;
+    protected float desiredKBInputV;
+    protected float desiredKBInputJ;
+    protected Vector3 movementH;
+    protected Vector3 movementV;
+    protected Vector3 Transform;
+    protected float mass;
+    protected Rigidbody rb;
+    protected bool isInAir = false;
+    protected Rigidbody gameObj;
 
     // Start is called before the first frame update
 
@@ -64,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void VerticalMovement()
+    protected void VerticalMovement()
     {
         desiredKBInputH = (controls.StandardMovement.HorizMove.ReadValue<float>()); // Go to the StandardMoivement action map and read the HorizMove Vector3 of that mapping.
 
@@ -88,7 +88,7 @@ public class PlayerMovement : MonoBehaviour
         //gameObject.transform.position += (moveSpeed * movementH) * Time.deltaTime; // Times desired movement by speed over the time between the frames then add to object transform
     }
 
-    private void HorizontalMovement()
+    protected void HorizontalMovement()
     {
         desiredKBInputV = (controls.StandardMovement.VertMove.ReadValue<float>()); // Go to the StandardMoivement action map and read the VertMove Vector3 of that mapping.
 
@@ -145,7 +145,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (other.tag == "GoalTrigger") // If the collider in question is tagged as "GoalTrigger"
         {
-            goalConsequence.Invoke(); // Invoke the Goal Consequence event.
+            //goalConsequence.Invoke(); // Invoke the Goal Consequence event.
             Debug.Log("Touched goal."); // Send string to debug log.
         }
     }

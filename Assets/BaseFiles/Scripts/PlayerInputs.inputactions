@@ -333,6 +333,134 @@
                     "isPartOfComposite": true
                 }
             ]
+        },
+        {
+            "name": "ButtonSequenceInputs",
+            "id": "00e7721e-2e5e-479c-a3d8-24c8b21f30da",
+            "actions": [
+                {
+                    "name": "InputQ",
+                    "type": "Button",
+                    "id": "de59dc1b-1f66-4639-9d39-02056a14a62a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "InputW",
+                    "type": "Button",
+                    "id": "a48f9878-96a1-4bc2-9e66-26c60c89712d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "InputE",
+                    "type": "Button",
+                    "id": "a12a8d13-11f3-4d2f-9a13-7f346970719b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "InputA",
+                    "type": "Button",
+                    "id": "d6c6d723-7fba-4aa1-abe4-b8be2c61cf09",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "InputS",
+                    "type": "Button",
+                    "id": "3aa871d5-0637-42df-ace7-fe3b47f1a489",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "InputD",
+                    "type": "Button",
+                    "id": "aa16a6b1-b74f-45aa-a7cf-c2a9015249e1",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "aa407225-37ca-4d9c-aaaa-9a2aabca6df5",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "InputQ",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1c08f08e-f920-4381-8f9b-25a68dfc4d3a",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "InputW",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "910bcf7f-66a0-4436-8259-8e52537c6a58",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "InputE",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b99962ea-5b33-4c9e-9040-bffb19ae9a94",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "InputD",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "050cbbc6-9d64-4613-8ea3-42f1673b6692",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "InputS",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "730c7bc5-dc33-4555-afa7-35710be61a9c",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "InputA",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

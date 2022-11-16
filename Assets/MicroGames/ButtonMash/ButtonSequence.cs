@@ -31,7 +31,7 @@ public class ButtonSequence : MonoBehaviour
         inputs = new PlayerInputs();
 
     }
-    private void Start()
+    protected void Start()
     {
         inputs.ButtonSequenceInputs.Enable();
 
@@ -39,11 +39,11 @@ public class ButtonSequence : MonoBehaviour
         GenerateSequence();
     }
 
-    private void Update()
+    protected void Update()
     {
         PressButtonCheck();
     }
-    private void Initialise()
+    protected void Initialise()
     {
         possibleInputs.Add("Q");
         possibleInputs.Add("W");
@@ -52,7 +52,7 @@ public class ButtonSequence : MonoBehaviour
         possibleInputs.Add("S");
         possibleInputs.Add("D");
     }
-    private void GenerateSequence()
+    protected void GenerateSequence()
     {
         buttonSequence = new List<string>();
         currKeyNum = 0;
@@ -74,7 +74,7 @@ public class ButtonSequence : MonoBehaviour
             buttonSequence.Add(possibleInputs[valueToAdd]);
         }
     }
-    private void PressButtonCheck()
+    protected void PressButtonCheck()
     {
         if (canInput && playing)
         {
@@ -110,7 +110,7 @@ public class ButtonSequence : MonoBehaviour
             }
         }
     }
-    private void CompareInputToDesired()
+    protected void CompareInputToDesired()
     {
         if (playing)
         {
@@ -161,7 +161,7 @@ public class ButtonSequence : MonoBehaviour
             }
         }
     }
-    private void IncorrectButton()
+    protected void IncorrectButton()
     {
         canInput = true;
         Debug.Log("Cooldown Finished");

@@ -6,21 +6,21 @@ using TMPro;
 public class FarmerMovement : PlayerMovement
 {
     [Header("Scene 1.2.2 Level Specific")]
-    [SerializeField] private TextMeshProUGUI promptText;
-    [SerializeField] private TextMeshProUGUI winLoseText;
-    [SerializeField] private GameTimer gameTimer;
-    [SerializeField] private float textStayTime;
-    [SerializeField] private bool isFacingRight = true;
-    [SerializeField] private GameObject horseSprite;
-    [SerializeField] private Material healthyHorse;
-    private Transform farmerSprite;
+    [SerializeField] protected TextMeshProUGUI promptText;
+    [SerializeField] protected TextMeshProUGUI winLoseText;
+    [SerializeField] protected GameTimer gameTimer;
+    [SerializeField] protected float textStayTime;
+    [SerializeField] protected bool isFacingRight = true;
+    [SerializeField] protected GameObject horseSprite;
+    [SerializeField] protected Material healthyHorse;
+    protected Transform farmerSprite;
 
     public void StartOfGameEvents()
     {
         StartCoroutine(TimedStartOfGameEvents());
     }
 
-    private IEnumerator TimedStartOfGameEvents()
+    protected IEnumerator TimedStartOfGameEvents()
     {
         promptText.enabled = true;
         AllowVerticalMovement = false;
@@ -33,7 +33,7 @@ public class FarmerMovement : PlayerMovement
         gameTimer.StopTimer = false;
     }
 
-    private void FixedUpdate()
+    protected void FixedUpdate()
     {
         farmerSprite = this.transform.Find("FarmerSprite");
 
@@ -90,7 +90,7 @@ public class FarmerMovement : PlayerMovement
         StartCoroutine(TimedTouchHorse());
     }
 
-    private IEnumerator TimedTouchHorse()
+    protected IEnumerator TimedTouchHorse()
     {
         horseSprite.GetComponentInChildren<MeshRenderer>().material = healthyHorse;
         AllowVerticalMovement = false;
@@ -102,12 +102,12 @@ public class FarmerMovement : PlayerMovement
         Debug.Log("Microgame Finished.");
     }
 
-    public void TimerUp()
+    protected void TimerUp()
     {
         StartCoroutine(TimedTimerUp());
     }
 
-    private IEnumerator TimedTimerUp()
+    protected IEnumerator TimedTimerUp()
     {
         AllowVerticalMovement = false;
         AllowJumping = false;
