@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
@@ -22,38 +23,39 @@ public class PlayerMovement : MonoBehaviour
     private float mass;
     private Rigidbody rb;
     private bool isInAir = false;
-
+    private Rigidbody gameObj;
 
     // Start is called before the first frame update
 
-    private void OnEnable()
+    protected private void OnEnable()
     {
         controls.Enable();
     }
 
-    private void OnDisable()
+    protected private void OnDisable()
     {
         controls.Disable();
     }
 
-    private void Awake()
+    protected private void Awake()
     {
         controls = new PlayerInputs();
         rb = GetComponent<Rigidbody>();
         mass = rb.mass;
+        gameObj = this.gameObject.GetComponent<Rigidbody>();
     }
 
-    private void Update()
+    protected private void Update()
     {
-        if (AllowHorizontalMovement == true) 
-        {
-            HorizontalMovement();
-        }
-        if (AllowVerticalMovement == true) 
+        if (AllowVerticalMovement) 
         {
             VerticalMovement();
         }
-        if (AllowJumping == true)
+        if (AllowHorizontalMovement) 
+        {
+            HorizontalMovement();
+        }
+        if (AllowJumping)
         {
             if(!isInAir && isJumpingRestricted || !isJumpingRestricted)
             {
@@ -62,55 +64,61 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void HorizontalMovement()
+    private void VerticalMovement()
     {
         desiredKBInputH = (controls.StandardMovement.HorizMove.ReadValue<float>()); // Go to the StandardMoivement action map and read the HorizMove Vector3 of that mapping.
 
         if (desiredKBInputH == 1) // If the key that is pressed is the positive binding
         {
-            movementH = new Vector3(0, 0, 1); // Create new Vector 3 for moving up.
+            gameObj.velocity = transform.up * moveSpeed; // Create new Vector 3 for moving up.
+            //movementH = new Vector3(0, 1, 0); // Create new Vector 3 for moving down.
         }
         else if (desiredKBInputH == -1) // If the key that is pressed is the negative binding
         {
-            movementH = new Vector3(0, 0, -1); // Create new Vector 3 for moving down.
+            gameObj.velocity = -transform.up * moveSpeed;
+            //movementH = new Vector3(0, -1, 0); // Create new Vector 3 for moving down.
         }
         else // If neither the positive or negative bindings are being detected
         {
-            movementH = new Vector3(0, 0, 0); // Create new Vector 3 for stopping movement.
+            
+            gameObj.velocity = Vector3.Scale((gameObj.velocity), new Vector3(1,0,1));
+            //movementH = new Vector3(0, 0, 0); // Create new Vector 3 for stopping movement.
         }
 
-        gameObject.transform.position += (moveSpeed * movementH) * Time.deltaTime; // Times desired movement by speed over the time between the frames then add to object transform
+        //gameObject.transform.position += (moveSpeed * movementH) * Time.deltaTime; // Times desired movement by speed over the time between the frames then add to object transform
     }
 
-    private void VerticalMovement()
+    private void HorizontalMovement()
     {
         desiredKBInputV = (controls.StandardMovement.VertMove.ReadValue<float>()); // Go to the StandardMoivement action map and read the VertMove Vector3 of that mapping.
 
         if (desiredKBInputV == 1) // If the key that is pressed is the positive binding
         {
-            movementV = new Vector3(1, 0, 0); // Create new Vector 3 for moving right.
+            gameObj.velocity = transform.right * moveSpeed;// * Time.deltaTime;
+            //movementV = new Vector3(1, 0, 0); // Create new Vector 3 for moving right.
         }
         else if (desiredKBInputV == -1) // If the key that is pressed is the negative binding
         {
-            movementV = new Vector3(-1, 0, 0); // Create new Vector 3 for moving left.
+            gameObj.velocity = -transform.right * moveSpeed;
+            //movementV = new Vector3(-1, 0, 0); // Create new Vector 3 for moving left.
         }
         else // If neither the positive or negative bindings are being detected
         {
-            movementV = new Vector3(0, 0, 0); // Create new Vector 3 for stopping movement.
+            //this.gameObject.GetComponent<Rigidbody>().velocity = Vector3.Scale(new Vector3(0, 1, 1);
+            gameObj.velocity = Vector3.Scale((gameObj.velocity), new Vector3(0,1,1));
+            //movementV = new Vector3(0, 0, 0); // Create new Vector 3 for stopping movement.
         }
 
-        gameObject.transform.position += (moveSpeed * movementV) * Time.deltaTime; // Times desired movement by speed over the time between the frames then add to object transform
-        
-
+        //gameObject.transform.position += (moveSpeed * movementV) * Time.deltaTime; // Times desired movement by speed over the time between the frames then add to object transform
     }
 
-    private void Jumping()
+    protected private void Jumping()
     {
         desiredKBInputJ = (controls.StandardMovement.Jump.ReadValue<float>()); // Go to the StandardMoivement action map and read the HorizMove Vector3 of that mapping.
 
-        if (desiredKBInputJ == 1 && Mathf.Abs(this.GetComponent<Rigidbody>().velocity.y) < 0.001f) // If the key that is pressed is the 
+        if (desiredKBInputJ == 1 && (gameObj.velocity.y) < 0.001f) // If the key that is pressed is the 
         {
-            this.GetComponent<Rigidbody>().velocity += Vector3.up * this.jumpHeight / mass;
+            gameObj.velocity += Vector3.up * jumpHeight;// / mass;
             if(isJumpingRestricted)
             {
                 isInAir = true;
@@ -128,7 +136,43 @@ public class PlayerMovement : MonoBehaviour
         if(collision.gameObject.tag == "floor")
         {
             isInAir = false;
+            Debug.Log("Collision!");
         }
-
     }
+
+    // Function calls the goalConsequence event if a trigger tagged as GoalTrigger is entered.
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "GoalTrigger") // If the collider in question is tagged as "GoalTrigger"
+        {
+            goalConsequence.Invoke(); // Invoke the Goal Consequence event.
+            Debug.Log("Touched goal."); // Send string to debug log.
+        }
+    }
+
+    /*Vector3 CheckBoundary(Vector3 pos) 
+    {
+        if (BoundaryEnabled == true) 
+        {
+            if (pos.x > Boundary.x)
+            return new Vector3(1, 0, 0);
+            Debug.Log("Hit right boundary.");
+
+            if (pos.x < -Boundary.x)
+            return new Vector3(-1, 0, 0);
+            Debug.Log("Hit left boundary.");
+
+            if (pos.y > Boundary.y)
+            return new Vector3(0, 1, 0);
+
+            if (pos.y < -Boundary.y)
+            return new Vector3(0, -1, 0);
+
+            return pos;
+        }
+        else 
+        {
+            return pos;
+        }
+    }*/
 }
