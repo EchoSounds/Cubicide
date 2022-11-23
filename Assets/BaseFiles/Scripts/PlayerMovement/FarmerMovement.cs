@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class FarmerMovement : PlayerMovement
+public class FarmerMovement : PlayerMovementOld
 {
     [Header("Scene 1.2.2 Level Specific")]
     [SerializeField] protected TextMeshProUGUI promptText;

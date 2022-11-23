@@ -658,7 +658,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3820787270769667392, guid: db838f7f7f74c3c4696df68fc8085826, type: 3}
       propertyPath: timeRemaining
-      value: 20
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3820787270769667392, guid: db838f7f7f74c3c4696df68fc8085826, type: 3}
       propertyPath: TimeUp.m_PersistentCalls.m_Calls.Array.size
@@ -1427,10 +1427,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1574748228319520305, guid: 466cab13f03bc1a4a9bbd40a584169e3, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1574748229290502351, guid: 466cab13f03bc1a4a9bbd40a584169e3, type: 3}
       propertyPath: gameTimer
       value: 
       objectReference: {fileID: 1132070996}
+    - target: {fileID: 1574748229290502351, guid: 466cab13f03bc1a4a9bbd40a584169e3, type: 3}
+      propertyPath: jumpHeight
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1574748229290502351, guid: 466cab13f03bc1a4a9bbd40a584169e3, type: 3}
       propertyPath: promptText
       value: 
