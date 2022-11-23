@@ -715,11 +715,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BarOrCount: 1
-  timeToComplete: 15
+  loopCount: 2
+  timeToComplete: 8
   buttonValue: 2.5
   decreaseValue: 1
   difficultyMultiplier: 5
-  ButtonCount: 30
+  ButtonCount: 20
   aButton:
     m_PersistentCalls:
       m_Calls: []
@@ -729,9 +730,9 @@ MonoBehaviour:
   winState:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7314995093596995732, guid: 80c9fd8a606f880488f135c36644aa81, type: 3}
-        m_TargetAssemblyTypeName: BaseGamaManager, Assembly-CSharp
-        m_MethodName: NextScene
+      - m_Target: {fileID: 6818762254237578864, guid: 4aaf5811bc282564da4ec183a838a5c3, type: 3}
+        m_TargetAssemblyTypeName: BaseGameManager, Assembly-CSharp
+        m_MethodName: TimelineProgress
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -740,7 +741,10 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
+  progress:
+    m_PersistentCalls:
+      m_Calls: []
   loseState:
     m_PersistentCalls:
       m_Calls: []
@@ -760,16 +764,16 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 727574d48f7ffeb46816b4d96154793f, type: 3}
   - {fileID: 21300000, guid: 5d0456ba7491f1f4a8e8cea5d4a5bda0, type: 3}
   numCaps:
-  - {fileID: 21300000, guid: 67073d586d3f50a4a9376ac2b1e10912, type: 3}
-  - {fileID: 21300000, guid: c174efe3355649141a967aad64878829, type: 3}
-  - {fileID: 21300000, guid: b8274a65e74c74745a087a9bb234a0cc, type: 3}
-  - {fileID: 21300000, guid: a33635858d87bf547bf1c43ad26674d6, type: 3}
-  - {fileID: 21300000, guid: 6513a8212acaf744bbb48601d992819c, type: 3}
-  - {fileID: 21300000, guid: 507d4180905b4c048b826b123565172d, type: 3}
-  - {fileID: 21300000, guid: 778edb4aa33c53d4499976eb432a2c44, type: 3}
-  - {fileID: 21300000, guid: db606559cd11b5c41acea98812414408, type: 3}
-  - {fileID: 21300000, guid: 1d2a7089efc4bb4488267237b2e5cfce, type: 3}
-  - {fileID: 21300000, guid: 5d0456ba7491f1f4a8e8cea5d4a5bda0, type: 3}
+  - {fileID: 21300000, guid: 56d689b05df64174a95dfdb73b764243, type: 3}
+  - {fileID: 21300000, guid: 9561cdc1f68d8d147ad5b32551a42bf3, type: 3}
+  - {fileID: 21300000, guid: aebb409cb40faf44582b3e60641fca13, type: 3}
+  - {fileID: 21300000, guid: 5f9c68c8c9b66154a8a46d9ad4b8a3db, type: 3}
+  - {fileID: 21300000, guid: 7a77fa4ae6146434c8a1e0f4d73c0cca, type: 3}
+  - {fileID: 21300000, guid: e7d30697bda48e34da4cee7e4f90b2f8, type: 3}
+  - {fileID: 21300000, guid: 51465094ff9731f47808e683ccfd7194, type: 3}
+  - {fileID: 21300000, guid: 2fd99e772bf4f1c4fa6f4719aa847b66, type: 3}
+  - {fileID: 21300000, guid: 94bd19afc3b98364aa9efc0a2cabb53a, type: 3}
+  - {fileID: 21300000, guid: 7c41fa9dbe2336c4cb4ae185bc42abc4, type: 3}
   splitTime: 
 --- !u!1 &1520595728863453770
 GameObject:
