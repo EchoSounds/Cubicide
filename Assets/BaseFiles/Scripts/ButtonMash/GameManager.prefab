@@ -46,26 +46,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a057a3204b050c74fa4202d5e4a3bf9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyCap: {fileID: 7483979311136683524}
-  keyCapCover: {fileID: 7483979312324954095}
+  OnPressSuccess:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnPressFailure:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPass:
+    m_PersistentCalls:
+      m_Calls: []
+  OnFail:
+    m_PersistentCalls:
+      m_Calls: []
   sequenceLength: 5
   numberOfLoops: 0
   waitTime: 1
   inputValue: 
   desiredValue: 
   looping: 0
-  keyCaps:
-  - {fileID: 21300000, guid: a33635858d87bf547bf1c43ad26674d6, type: 3}
-  - {fileID: 21300000, guid: 6513a8212acaf744bbb48601d992819c, type: 3}
-  - {fileID: 21300000, guid: 507d4180905b4c048b826b123565172d, type: 3}
-  - {fileID: 21300000, guid: 778edb4aa33c53d4499976eb432a2c44, type: 3}
-  - {fileID: 21300000, guid: db606559cd11b5c41acea98812414408, type: 3}
-  - {fileID: 21300000, guid: 1d2a7089efc4bb4488267237b2e5cfce, type: 3}
-  keyCapCovers:
-  - {fileID: 21300000, guid: 23a3b31826348ce46924d6940d51856b, type: 3}
-  - {fileID: 21300000, guid: 73f6c01859efcef408b7b0fa60239278, type: 3}
-  - {fileID: 21300000, guid: 4d4b33e3ea1c35944b008e77f2fa4987, type: 3}
-  buttonSequenceCodes: []
+  buttonSequence: []
 --- !u!212 &7483979311136683524
 SpriteRenderer:
   m_ObjectHideFlags: 0
