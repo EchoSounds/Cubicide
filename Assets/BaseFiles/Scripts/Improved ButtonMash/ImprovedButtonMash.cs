@@ -174,7 +174,7 @@ public class ImprovedButtonMash : MonoBehaviour
                 {
                     if (loopCount > 0)
                     {
-                        progress.Invoke();
+                        Progress();
                         decreaseValue = 1;
                         remainingTime = timeToComplete;
                         loopCount--;
@@ -191,7 +191,7 @@ public class ImprovedButtonMash : MonoBehaviour
                 {
                     if (loopCount > 0)
                     {
-                        progress.Invoke();
+                        Progress();
                         ButtonCount = maxButtonCount;
                         remainingTime = timeToComplete;
                         loopCount--;
@@ -271,6 +271,11 @@ public class ImprovedButtonMash : MonoBehaviour
         S.sprite = keyCapCovers[3];
 
         BaseGameManager.LoadScene(1, 2);
+    }
+
+    private void Progress()
+    {
+
     }
 
     private void LoseState()
