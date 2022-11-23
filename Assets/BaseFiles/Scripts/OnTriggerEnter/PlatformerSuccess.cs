@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -7,6 +8,7 @@ public class PlatformerSuccess : MonoBehaviour
 {
 
     [SerializeField] private UnityEvent SuccessTriggered;
+    [SerializeField] private bool hasBeenTriggered = false;
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +24,11 @@ public class PlatformerSuccess : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        SuccessTriggered.Invoke();
-        Debug.Log("Success Triggered!");
+        if (!hasBeenTriggered)
+        {
+            SuccessTriggered.Invoke();
+            Debug.Log("Success Triggered!");
+            hasBeenTriggered = true;
+        }
     }
 }

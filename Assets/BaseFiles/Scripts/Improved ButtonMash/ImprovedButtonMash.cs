@@ -238,13 +238,15 @@ public class ImprovedButtonMash : MonoBehaviour
         Debug.Log("You Win");
         playing = false;
 
-        BaseGameManager.LoadScene(1, 2);
+        winState.Invoke();
 
         AC.sprite = keyCapCovers[0];
         DC.sprite = keyCapCovers[0];
         A.sprite = keyCapCovers[0];
         D.sprite = keyCapCovers[0];
         S.sprite = keyCapCovers[3];
+
+        BaseGameManager.LoadScene(1, 2);
     }
 
     private void LoseState()
