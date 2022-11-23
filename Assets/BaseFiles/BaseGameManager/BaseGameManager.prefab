@@ -110,12 +110,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2917578866415437685}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6cc9fcf9b3b8c74ba46d08bb48effda, type: 3}
+  m_Script: {fileID: 11500000, guid: b63d5db333a934a45bae9ebe3d013c9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneTimeline:
-  - MainMenu
-  - ImprovedMultiButtonMash
-  - QTESequence
+  sceneTimeline: []
   sceneIndexOrder: []
   fader: {fileID: 0}
