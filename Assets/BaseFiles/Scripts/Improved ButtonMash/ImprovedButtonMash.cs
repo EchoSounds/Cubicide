@@ -105,6 +105,7 @@ public class ImprovedButtonMash : MonoBehaviour
     private void StartGame()
     {
         playing = true;
+        ChangeDesiredInputMash();
     }
 
     private void Update()
