@@ -207,11 +207,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!224 &59948580 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 6947041063725161009, guid: 4aaf5811bc282564da4ec183a838a5c3, type: 3}
-  m_PrefabInstance: {fileID: 4037361960826049549}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &129971734
 GameObject:
   m_ObjectHideFlags: 0
@@ -723,82 +718,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec0ac0af0da5f5b4089aee1c51d15e60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1233428351
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1233428354}
-  - component: {fileID: 1233428353}
-  - component: {fileID: 1233428352}
-  m_Layer: 5
-  m_Name: Image
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1233428352
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1233428351}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1233428353
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1233428351}
-  m_CullTransparentMesh: 1
---- !u!224 &1233428354
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1233428351}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 59948580}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1636513792
 GameObject:
   m_ObjectHideFlags: 0
@@ -985,10 +904,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1857808111746298945, guid: 4aaf5811bc282564da4ec183a838a5c3, type: 3}
-      propertyPath: m_SortingOrder
-      value: 32767
-      objectReference: {fileID: 0}
     - target: {fileID: 2917578866415437685, guid: 4aaf5811bc282564da4ec183a838a5c3, type: 3}
       propertyPath: m_Name
       value: BaseGameManager
@@ -998,9 +913,25 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6818762254237578864, guid: 4aaf5811bc282564da4ec183a838a5c3, type: 3}
-      propertyPath: fader
-      value: 
-      objectReference: {fileID: 1233428352}
+      propertyPath: sceneTimeline.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6818762254237578864, guid: 4aaf5811bc282564da4ec183a838a5c3, type: 3}
+      propertyPath: sceneTimeline.Array.data[0]
+      value: MainMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 6818762254237578864, guid: 4aaf5811bc282564da4ec183a838a5c3, type: 3}
+      propertyPath: sceneTimeline.Array.data[1]
+      value: 1.1 Microgame
+      objectReference: {fileID: 0}
+    - target: {fileID: 6818762254237578864, guid: 4aaf5811bc282564da4ec183a838a5c3, type: 3}
+      propertyPath: sceneTimeline.Array.data[2]
+      value: Scene 1.2.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6818762254237578864, guid: 4aaf5811bc282564da4ec183a838a5c3, type: 3}
+      propertyPath: sceneTimeline.Array.data[3]
+      value: Scene 1.2.X
+      objectReference: {fileID: 0}
     - target: {fileID: 6947041063725161009, guid: 4aaf5811bc282564da4ec183a838a5c3, type: 3}
       propertyPath: m_Pivot.x
       value: 0

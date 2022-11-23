@@ -11,6 +11,7 @@ public class ImprovedButtonMash : MonoBehaviour
     //Bools
     [Tooltip("True is Bar Game, False is CountDown Game")]
     [SerializeField] bool BarOrCount = true;
+    [SerializeField] int loopCount = 0;
     bool playing = false;
 
     //Timer
@@ -33,6 +34,7 @@ public class ImprovedButtonMash : MonoBehaviour
     //Ints
     [Header("CountDown Game Stats")]
     [SerializeField] int ButtonCount = 30;
+    private int maxButtonCount = 0;
 
 
 
@@ -41,6 +43,7 @@ public class ImprovedButtonMash : MonoBehaviour
     public UnityEngine.Events.UnityEvent aButton;
     public UnityEngine.Events.UnityEvent dButton;
     public UnityEngine.Events.UnityEvent winState;
+    public UnityEngine.Events.UnityEvent progress;
     public UnityEngine.Events.UnityEvent loseState;
 
     //References
@@ -77,6 +80,7 @@ public class ImprovedButtonMash : MonoBehaviour
     private void Start()
     {
         Invoke("StartGame", 2);
+        maxButtonCount = ButtonCount;
 
         //for (int i = 0; i < 9; i++)
         //{
@@ -168,14 +172,34 @@ public class ImprovedButtonMash : MonoBehaviour
                 }
                 else if (remainingTime <= 0) //Win State
                 {
-                    WinState();
+                    if (loopCount > 0)
+                    {
+                        Progress();
+                        decreaseValue = 1;
+                        remainingTime = timeToComplete;
+                        loopCount--;
+                    }
+                    else
+                    {
+                        WinState();
+                    }
                 }
             }
             else
             {
                 if (ButtonCount <= 0)
                 {
-                    WinState();
+                    if (loopCount > 0)
+                    {
+                        Progress();
+                        ButtonCount = maxButtonCount;
+                        remainingTime = timeToComplete;
+                        loopCount--;
+                    }
+                    else
+                    {
+                        WinState();
+                    }
                 }
                 else if (remainingTime <= 0)
                 {
@@ -247,6 +271,11 @@ public class ImprovedButtonMash : MonoBehaviour
         S.sprite = keyCapCovers[3];
 
         BaseGameManager.LoadScene(1, 2);
+    }
+
+    private void Progress()
+    {
+
     }
 
     private void LoseState()

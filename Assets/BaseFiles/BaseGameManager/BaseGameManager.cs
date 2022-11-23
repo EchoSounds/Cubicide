@@ -43,6 +43,10 @@ public class BaseGameManager : MonoBehaviour
             Debug.Log(Scenename);
         }
     }
+    public void TimelineProgress()
+    {
+        BaseGameManager.LoadScene(1, 1);
+    }
 
     public static void LoadScene(float duration = 1, float waitTime = 0)
     {
@@ -51,11 +55,13 @@ public class BaseGameManager : MonoBehaviour
 
     private IEnumerator FadeScene(float duration, float waitTime)
     {
-        yield return new WaitForSeconds(waitTime);
+        yield return new WaitForSeconds(0.5f);
 
         fader.gameObject.SetActive(true);
+        Time.timeScale = 0;
 
-        for(float i = 0; i < 1; i+= Time.deltaTime / duration)
+
+        for (float i = 0; i < 1; i+= Time.deltaTime / duration)
         {
             fader.color = new Color(0, 0, 0,Mathf.Lerp(0,1,i));
             yield return null;
@@ -76,5 +82,6 @@ public class BaseGameManager : MonoBehaviour
         }
 
         fader.gameObject.SetActive(false);
+        Time.timeScale = 1;
     }
 }
