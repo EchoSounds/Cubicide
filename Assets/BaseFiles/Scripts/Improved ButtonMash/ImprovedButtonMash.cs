@@ -278,7 +278,7 @@ public class ImprovedButtonMash : MonoBehaviour
         Debug.Log("Waiting");
         yield return new WaitForSeconds(1f);
         Debug.Log("Done");
-        BaseGameManager.LoadScene(1, 2);
+        BaseGameManager.LoadScene(false,1, 2);
     }
 
     private void LoseState()

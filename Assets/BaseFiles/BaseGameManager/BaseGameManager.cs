@@ -8,7 +8,7 @@ public class BaseGameManager : MonoBehaviour
 {
     private static BaseGameManager instance;
 
-    private int currTimelineSpot = 0;
+    public int currTimelineSpot = 1;
 
     [SerializeField] private List<string> sceneTimeline;
 
@@ -17,7 +17,9 @@ public class BaseGameManager : MonoBehaviour
 
     private void Awake()
     {
-        if(instance == null)
+        currTimelineSpot = 1;
+
+        if (instance == null)
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
@@ -29,10 +31,6 @@ public class BaseGameManager : MonoBehaviour
         {
             Destroy(instance);
         }
-    }
-
-    private void Start()
-    {
 
         for (int i = 0; i < SceneManager.sceneCountInBuildSettings; i++)
         {
@@ -42,18 +40,18 @@ public class BaseGameManager : MonoBehaviour
             Debug.Log(Scenename);
         }
     }
+
     public void TimelineProgress()
     {
-        BaseGameManager.LoadScene(1, 1);
-        Debug.Log("Button Press");
+        BaseGameManager.LoadScene(false, 1, 1);
     }
 
-    public static void LoadScene(float duration = 1, float waitTime = 0)
+    public static void LoadScene(bool restart = false, float duration = 1, float waitTime = 0)
     {
-        instance.StartCoroutine(instance.FadeScene(duration,waitTime));
+        instance.StartCoroutine(instance.FadeScene(restart,duration,waitTime));
     }
 
-    private IEnumerator FadeScene(float duration, float waitTime)
+    private IEnumerator FadeScene(bool restart,float duration, float waitTime)
     {
         yield return new WaitForSeconds(0.5f);
 
@@ -66,11 +64,21 @@ public class BaseGameManager : MonoBehaviour
             yield return null;
         }
 
-        currTimelineSpot++;
+        if (restart == false)
+        {
+            currTimelineSpot++;
+            Debug.Log(currTimelineSpot);
+        } else
+        {
+            currTimelineSpot = 1;
+            Debug.Log("restarting");
+        }
+        
+
         AsyncOperation ao = SceneManager.LoadSceneAsync(sceneTimeline[currTimelineSpot]);
 
         while (!ao.isDone)
-                yield return null;
+            yield return null;
 
         Time.timeScale = 0;
 

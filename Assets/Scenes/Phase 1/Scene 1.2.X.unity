@@ -370,7 +370,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1520595728821395714, guid: cf269d44b1653434396d49639273a1a8, type: 3}
       propertyPath: winState.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1520595728821395714, guid: cf269d44b1653434396d49639273a1a8, type: 3}
       propertyPath: loseState.m_PersistentCalls.m_Calls.Array.size
@@ -402,7 +402,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1520595728821395714, guid: cf269d44b1653434396d49639273a1a8, type: 3}
       propertyPath: winState.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1520595728821395714, guid: cf269d44b1653434396d49639273a1a8, type: 3}
       propertyPath: aButton.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -443,7 +443,7 @@ PrefabInstance:
     - target: {fileID: 1520595728821395714, guid: cf269d44b1653434396d49639273a1a8, type: 3}
       propertyPath: winState.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
-      objectReference: {fileID: 2111936897}
+      objectReference: {fileID: 6818762254237578864, guid: 4aaf5811bc282564da4ec183a838a5c3, type: 3}
     - target: {fileID: 1520595728821395714, guid: cf269d44b1653434396d49639273a1a8, type: 3}
       propertyPath: loseState.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -522,7 +522,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1520595728821395714, guid: cf269d44b1653434396d49639273a1a8, type: 3}
       propertyPath: winState.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
-      value: SetActive
+      value: TimelineProgress
       objectReference: {fileID: 0}
     - target: {fileID: 1520595728821395714, guid: cf269d44b1653434396d49639273a1a8, type: 3}
       propertyPath: loseState.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -562,7 +562,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1520595728821395714, guid: cf269d44b1653434396d49639273a1a8, type: 3}
       propertyPath: winState.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
-      value: UnityEngine.GameObject, UnityEngine
+      value: BaseGameManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1520595728821395714, guid: cf269d44b1653434396d49639273a1a8, type: 3}
       propertyPath: aButton.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
@@ -594,7 +594,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1520595728821395714, guid: cf269d44b1653434396d49639273a1a8, type: 3}
       propertyPath: winState.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_BoolArgument
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1520595728821395714, guid: cf269d44b1653434396d49639273a1a8, type: 3}
       propertyPath: loseState.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
