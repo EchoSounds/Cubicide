@@ -8,7 +8,7 @@ public class BaseGameManager : MonoBehaviour
 {
     private static BaseGameManager instance;
 
-    public int currTimelineSpot = 1;
+public int currTimelineSpot = 0;
 
     [SerializeField] private List<string> sceneTimeline;
 
