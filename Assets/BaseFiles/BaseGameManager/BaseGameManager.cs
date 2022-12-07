@@ -11,7 +11,6 @@ public class BaseGameManager : MonoBehaviour
     private int currTimelineSpot = 0;
 
     [SerializeField] private List<string> sceneTimeline;
-    [SerializeField] private List<string> sceneIndexOrder;
 
     public Image fader;
     private GameObject[] gameManager;
@@ -39,13 +38,14 @@ public class BaseGameManager : MonoBehaviour
         {
             string Scenename;
             Scenename = System.IO.Path.GetFileNameWithoutExtension(UnityEngine.SceneManagement.SceneUtility.GetScenePathByBuildIndex(i));
-            sceneIndexOrder.Add(Scenename);
+            sceneTimeline.Add(Scenename);
             Debug.Log(Scenename);
         }
     }
     public void TimelineProgress()
     {
         BaseGameManager.LoadScene(1, 1);
+        Debug.Log("Button Press");
     }
 
     public static void LoadScene(float duration = 1, float waitTime = 0)
@@ -58,7 +58,6 @@ public class BaseGameManager : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         fader.gameObject.SetActive(true);
-        Time.timeScale = 0;
 
 
         for (float i = 0; i < 1; i+= Time.deltaTime / duration)
@@ -73,9 +72,11 @@ public class BaseGameManager : MonoBehaviour
         while (!ao.isDone)
                 yield return null;
 
-        yield return new WaitForSeconds(waitTime);
+        Time.timeScale = 0;
 
-        for (float i = 0; i < 1; i += Time.deltaTime / duration)
+        yield return new WaitForSecondsRealtime(waitTime);
+
+        for (float i = 0; i < 1; i += Time.unscaledDeltaTime / duration)
         {
             fader.color = new Color(0, 0, 0, Mathf.Lerp(1, 0, i));
             yield return null;
