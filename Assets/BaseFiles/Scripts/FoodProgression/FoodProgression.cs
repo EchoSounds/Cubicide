@@ -6,7 +6,7 @@ public class FoodProgression : MonoBehaviour
 {
     [SerializeField] private List<GameObject> food = new List<GameObject>();
     public UnityEngine.Events.UnityEvent FinishedFood;
-    int progress = 5;
+    [SerializeField]int progress = 6;
     public void NomNoms()
     {
         progress--;
@@ -15,10 +15,9 @@ public class FoodProgression : MonoBehaviour
 
     private void Update()
     {
-        if (progress == 0)
+        if (progress == 2)
         {
-            FinishedFood.Invoke();
+            food[1].gameObject.SetActive(false);
         }
     }
-
 }

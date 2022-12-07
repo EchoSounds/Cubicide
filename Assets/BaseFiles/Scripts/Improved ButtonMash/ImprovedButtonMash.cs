@@ -51,12 +51,12 @@ public class ImprovedButtonMash : MonoBehaviour
     [Header("//////////////Ignore Anything Below This//////////////")]
     [SerializeField] private Image fillBar;
     [SerializeField] private Image barOutline;
-    [SerializeField] private SpriteRenderer num1;
-    [SerializeField] private SpriteRenderer num2;
+    [SerializeField] private Image num1;
+    [SerializeField] private Image num2;
     [SerializeField] private TextMeshProUGUI timerText;
 
     //Sprite Renders
-    [SerializeField] private SpriteRenderer A, AC, D, DC, S;
+    [SerializeField] private Image A, AC, D, DC, S;
 
     //Lists
     [SerializeField] private List<Sprite> keyCapCovers = new List<Sprite>();
@@ -181,6 +181,7 @@ public class ImprovedButtonMash : MonoBehaviour
                     }
                     else
                     {
+                        progress.Invoke();
                         WinState();
                     }
                 }
@@ -198,6 +199,7 @@ public class ImprovedButtonMash : MonoBehaviour
                     }
                     else
                     {
+                        progress.Invoke();
                         WinState();
                     }
                 }
@@ -262,15 +264,21 @@ public class ImprovedButtonMash : MonoBehaviour
         Debug.Log("You Win");
         playing = false;
 
-        winState.Invoke();
+        StartCoroutine(FinishGame());
 
         AC.sprite = keyCapCovers[0];
         DC.sprite = keyCapCovers[0];
         A.sprite = keyCapCovers[0];
         D.sprite = keyCapCovers[0];
         S.sprite = keyCapCovers[3];
+    }
 
-        BaseGameManager.LoadScene(1, 2);
+    private IEnumerator FinishGame()
+    {
+        Debug.Log("Waiting");
+        yield return new WaitForSeconds(1f);
+        Debug.Log("Done");
+        BaseGameManager.LoadScene(false,1, 2);
     }
 
     private void LoseState()

@@ -9,12 +9,12 @@ EditorBuildSettings:
     path: Assets/BaseFiles/Main Menu/MainMenu.unity
     guid: 1f816a8029f08f74aba270ad026a6801
   - enabled: 1
+    path: Assets/BaseFiles/MainMenu 1.unity
+    guid: b8086b9c2439b8747bda8e7593c5e7c0
+  - enabled: 1
     path: Assets/Scenes/Phase 1/Scene 1.1.unity
     guid: bdd593a85c9960548beb08ea9247b09a
   - enabled: 1
     path: Assets/Scenes/Phase 1/Scene 1.2.2.unity
     guid: 2bd180be79c426249b51b913cb4b5606
-  - enabled: 1
-    path: Assets/Scenes/Phase 1/Scene 1.2.X.unity
-    guid: 79f13299a4cc3ed4aa4a18a31aafee98
   m_configObjects: {}
