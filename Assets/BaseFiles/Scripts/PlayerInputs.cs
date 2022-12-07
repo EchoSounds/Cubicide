@@ -132,7 +132,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Button2"",
+                    ""name"": ""Pause"",
                     ""type"": ""Button"",
                     ""id"": ""30016451-1f13-460a-8eab-c0a1f04fa9a1"",
                     ""expectedControlType"": ""Button"",
@@ -156,11 +156,11 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""481ca81f-4d91-4814-9d31-3b1aeceb35dc"",
-                    ""path"": """",
+                    ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Button2"",
+                    ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -499,7 +499,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         // Buttons
         m_Buttons = asset.FindActionMap("Buttons", throwIfNotFound: true);
         m_Buttons_Button1 = m_Buttons.FindAction("Button1", throwIfNotFound: true);
-        m_Buttons_Button2 = m_Buttons.FindAction("Button2", throwIfNotFound: true);
+        m_Buttons_Pause = m_Buttons.FindAction("Pause", throwIfNotFound: true);
         // Space
         m_Space = asset.FindActionMap("Space", throwIfNotFound: true);
         m_Space_Space = m_Space.FindAction("Space", throwIfNotFound: true);
@@ -678,13 +678,13 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Buttons;
     private IButtonsActions m_ButtonsActionsCallbackInterface;
     private readonly InputAction m_Buttons_Button1;
-    private readonly InputAction m_Buttons_Button2;
+    private readonly InputAction m_Buttons_Pause;
     public struct ButtonsActions
     {
         private @PlayerInputs m_Wrapper;
         public ButtonsActions(@PlayerInputs wrapper) { m_Wrapper = wrapper; }
         public InputAction @Button1 => m_Wrapper.m_Buttons_Button1;
-        public InputAction @Button2 => m_Wrapper.m_Buttons_Button2;
+        public InputAction @Pause => m_Wrapper.m_Buttons_Pause;
         public InputActionMap Get() { return m_Wrapper.m_Buttons; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -697,9 +697,9 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 @Button1.started -= m_Wrapper.m_ButtonsActionsCallbackInterface.OnButton1;
                 @Button1.performed -= m_Wrapper.m_ButtonsActionsCallbackInterface.OnButton1;
                 @Button1.canceled -= m_Wrapper.m_ButtonsActionsCallbackInterface.OnButton1;
-                @Button2.started -= m_Wrapper.m_ButtonsActionsCallbackInterface.OnButton2;
-                @Button2.performed -= m_Wrapper.m_ButtonsActionsCallbackInterface.OnButton2;
-                @Button2.canceled -= m_Wrapper.m_ButtonsActionsCallbackInterface.OnButton2;
+                @Pause.started -= m_Wrapper.m_ButtonsActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_ButtonsActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_ButtonsActionsCallbackInterface.OnPause;
             }
             m_Wrapper.m_ButtonsActionsCallbackInterface = instance;
             if (instance != null)
@@ -707,9 +707,9 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 @Button1.started += instance.OnButton1;
                 @Button1.performed += instance.OnButton1;
                 @Button1.canceled += instance.OnButton1;
-                @Button2.started += instance.OnButton2;
-                @Button2.performed += instance.OnButton2;
-                @Button2.canceled += instance.OnButton2;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
             }
         }
     }
@@ -917,7 +917,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
     public interface IButtonsActions
     {
         void OnButton1(InputAction.CallbackContext context);
-        void OnButton2(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
     public interface ISpaceActions
     {

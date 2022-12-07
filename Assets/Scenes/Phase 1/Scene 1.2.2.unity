@@ -1529,6 +1529,34 @@ PrefabInstance:
       propertyPath: AllowHorizontalMovement
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1574748229290502351, guid: 466cab13f03bc1a4a9bbd40a584169e3, type: 3}
+      propertyPath: goalConsequence.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1574748229290502351, guid: 466cab13f03bc1a4a9bbd40a584169e3, type: 3}
+      propertyPath: goalConsequence.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1574748229290502351, guid: 466cab13f03bc1a4a9bbd40a584169e3, type: 3}
+      propertyPath: goalConsequence.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 6818762254237578864, guid: 4aaf5811bc282564da4ec183a838a5c3, type: 3}
+    - target: {fileID: 1574748229290502351, guid: 466cab13f03bc1a4a9bbd40a584169e3, type: 3}
+      propertyPath: goalConsequence.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1574748229290502351, guid: 466cab13f03bc1a4a9bbd40a584169e3, type: 3}
+      propertyPath: goalConsequence.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: TimelineProgress
+      objectReference: {fileID: 0}
+    - target: {fileID: 1574748229290502351, guid: 466cab13f03bc1a4a9bbd40a584169e3, type: 3}
+      propertyPath: goalConsequence.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: BaseGameManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1574748229290502351, guid: 466cab13f03bc1a4a9bbd40a584169e3, type: 3}
+      propertyPath: goalConsequence.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 1574748229290502387, guid: 466cab13f03bc1a4a9bbd40a584169e3, type: 3}
       propertyPath: m_RootOrder
       value: 5
