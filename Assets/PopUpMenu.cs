@@ -34,20 +34,23 @@ public class PopUpMenu : MonoBehaviour
 
     private void Update()
     {
-        if (!paused)
+        if(baseGameManager.GetComponent<BaseGameManager>().currTimelineSpot > 1)
         {
-            if (inputs.Buttons.Pause.WasPressedThisFrame())
+            if (!paused)
             {
-                paused = true;
-                backing.SetActive(true);
+                if (inputs.Buttons.Pause.WasPressedThisFrame())
+                {
+                    paused = true;
+                    backing.SetActive(true);
+                }
             }
-        }
-        else
-        {
-            if (inputs.Buttons.Pause.WasPressedThisFrame())
+            else
             {
-                paused = false;
-                backing.SetActive(false);
+                if (inputs.Buttons.Pause.WasPressedThisFrame())
+                {
+                    paused = false;
+                    backing.SetActive(false);
+                }
             }
         }
 
@@ -57,6 +60,7 @@ public class PopUpMenu : MonoBehaviour
         } else
         {
             Time.timeScale = 1;
+            
         }
     }
 
