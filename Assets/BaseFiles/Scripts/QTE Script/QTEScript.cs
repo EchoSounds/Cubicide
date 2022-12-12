@@ -13,6 +13,7 @@ public class QTEScript : MonoBehaviour
 
     public float remainingTime;
     public float TimeLeftToPress;
+    public bool stopTimer = false;
     public TextMeshProUGUI timer;
 
     private void Awake()
@@ -39,22 +40,30 @@ public class QTEScript : MonoBehaviour
     // Update is called once per frame
     public void Update()
     {
-        timer.text = remainingTime.ToString();
+        timer.text = Mathf.Ceil(remainingTime).ToString();
 
-        remainingTime = Mathf.Clamp(remainingTime -= Time.deltaTime, 0, 999999);
-        //remainingTime = Mathf.Round(remainingTime * 100f) / 100f;
-        if (remainingTime > 0)
+        if (!stopTimer)
         {
-            if (inputs.TimerQTE.QTE_E.WasPerformedThisFrame())
+            remainingTime = Mathf.Clamp(remainingTime -= Time.deltaTime, 0, 999999);
+            //remainingTime = Mathf.Round(remainingTime * 100f) / 100f;
+            if (remainingTime > 0)
             {
-                timerSuccessState.Invoke();
+                if (inputs.TimerQTE.QTE_E.WasPerformedThisFrame())
+                {
+                    stopTimer = true;
+                    timerSuccessState.Invoke();
+                }
+                Debug.Log(remainingTime);
             }
-            Debug.Log(remainingTime);
+            else if (remainingTime <= 0)
+            {
+                timerFailState.Invoke();
+                Debug.Log("Timer has run out!");
+            }
         }
-        else if (remainingTime <= 0)
+        else
         {
-            timerFailState.Invoke();
-            Debug.Log("Timer has run out!");
+            return;
         }
     }
 }
