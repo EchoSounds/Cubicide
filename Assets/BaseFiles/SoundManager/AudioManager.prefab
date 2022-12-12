@@ -46,7 +46,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - name: CorrectKey
-    clip: {fileID: 0}
-    volume: 0
-    pitch: 0
+    clip: {fileID: 8300000, guid: 2157adc23e205d74c9c33f6065553790, type: 3}
+    volume: 1.1
+    pitch: 0.64
+    loop: 0
+    source: {fileID: 0}
+  - name: IncorrectKey
+    clip: {fileID: 8300000, guid: 2567adaca053a3944ac18000e78d5a11, type: 3}
+    volume: 1.1
+    pitch: 0.64
+    loop: 0
     source: {fileID: 0}

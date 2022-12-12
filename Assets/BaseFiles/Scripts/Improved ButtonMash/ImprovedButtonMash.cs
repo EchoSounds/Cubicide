@@ -264,6 +264,7 @@ public class ImprovedButtonMash : MonoBehaviour
         Debug.Log("You Win");
         playing = false;
 
+        winState.Invoke();
         StartCoroutine(FinishGame());
 
         AC.sprite = keyCapCovers[0];
