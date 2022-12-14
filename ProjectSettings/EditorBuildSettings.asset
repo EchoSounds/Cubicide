@@ -12,11 +12,11 @@ EditorBuildSettings:
     path: Assets/BaseFiles/Main Menu/MainMenu 1.unity
     guid: 43b44ed9ecd02e24c83c762533d97ca2
   - enabled: 1
-    path: Assets/Scenes/Phase 2/Scene 2.12.unity
-    guid: f1888fd1b882545469fa8698f6a80b2e
-  - enabled: 1
     path: Assets/Scenes/Phase 1/Scene 1.1.unity
     guid: bdd593a85c9960548beb08ea9247b09a
+  - enabled: 1
+    path: Assets/Scenes/Phase 2/Scene 2.12.unity
+    guid: f1888fd1b882545469fa8698f6a80b2e
   - enabled: 1
     path: Assets/Scenes/Phase 1/Scene 1.2.2.unity
     guid: 2bd180be79c426249b51b913cb4b5606
@@ -44,9 +44,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Phase 2/Scene 2.1.unity
     guid: 4c1932ee84fdc1747a5bbb5cf7575372
-  - enabled: 1
-    path: Assets/Scenes/Phase 2/Scene 2.2.unity
-    guid: 299b15d0337ccb544b4e9382fa35e3dc
   - enabled: 1
     path: Assets/Scenes/Phase 2/Scene 2.3.unity
     guid: e52347242104e49419dc0b3d0a08d1d1
