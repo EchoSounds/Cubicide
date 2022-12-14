@@ -8,17 +8,18 @@ public class BaseGameManager : MonoBehaviour
 {
     private static BaseGameManager instance;
 
-    private int currTimelineSpot = 0;
+public int currTimelineSpot = 0;
 
     [SerializeField] private List<string> sceneTimeline;
-    [SerializeField] private List<string> sceneIndexOrder;
 
     public Image fader;
     private GameObject[] gameManager;
 
     private void Awake()
     {
-        if(instance == null)
+        currTimelineSpot = 1;
+
+        if (instance == null)
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
@@ -30,35 +31,31 @@ public class BaseGameManager : MonoBehaviour
         {
             Destroy(instance);
         }
-    }
-
-    private void Start()
-    {
 
         for (int i = 0; i < SceneManager.sceneCountInBuildSettings; i++)
         {
             string Scenename;
             Scenename = System.IO.Path.GetFileNameWithoutExtension(UnityEngine.SceneManagement.SceneUtility.GetScenePathByBuildIndex(i));
-            sceneIndexOrder.Add(Scenename);
+            sceneTimeline.Add(Scenename);
             Debug.Log(Scenename);
         }
     }
+
     public void TimelineProgress()
     {
-        BaseGameManager.LoadScene(1, 1);
+        BaseGameManager.LoadScene(false, 1, 1);
     }
 
-    public static void LoadScene(float duration = 1, float waitTime = 0)
+    public static void LoadScene(bool restart = false, float duration = 1, float waitTime = 0)
     {
-        instance.StartCoroutine(instance.FadeScene(duration,waitTime));
+        instance.StartCoroutine(instance.FadeScene(restart,duration,waitTime));
     }
 
-    private IEnumerator FadeScene(float duration, float waitTime)
+    private IEnumerator FadeScene(bool restart,float duration, float waitTime)
     {
         yield return new WaitForSeconds(0.5f);
 
         fader.gameObject.SetActive(true);
-        Time.timeScale = 0;
 
 
         for (float i = 0; i < 1; i+= Time.deltaTime / duration)
@@ -67,15 +64,27 @@ public class BaseGameManager : MonoBehaviour
             yield return null;
         }
 
-        currTimelineSpot++;
+        if (restart == false)
+        {
+            currTimelineSpot++;
+            Debug.Log(currTimelineSpot);
+        } else
+        {
+            currTimelineSpot = 1;
+            Debug.Log("restarting");
+        }
+        
+
         AsyncOperation ao = SceneManager.LoadSceneAsync(sceneTimeline[currTimelineSpot]);
 
         while (!ao.isDone)
-                yield return null;
+            yield return null;
 
-        yield return new WaitForSeconds(waitTime);
+        Time.timeScale = 0;
 
-        for (float i = 0; i < 1; i += Time.deltaTime / duration)
+        yield return new WaitForSecondsRealtime(waitTime);
+
+        for (float i = 0; i < 1; i += Time.unscaledDeltaTime / duration)
         {
             fader.color = new Color(0, 0, 0, Mathf.Lerp(1, 0, i));
             yield return null;
