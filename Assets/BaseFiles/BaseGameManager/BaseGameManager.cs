@@ -68,9 +68,9 @@ public int currTimelineSpot = 0;
         {
             currTimelineSpot++;
             Debug.Log(currTimelineSpot);
-        } else
+        } else if (restart == true)
         {
-            currTimelineSpot = 0;
+            currTimelineSpot = 1;
             Debug.Log("restarting");
         }
         
@@ -89,6 +89,8 @@ public int currTimelineSpot = 0;
             fader.color = new Color(0, 0, 0, Mathf.Lerp(1, 0, i));
             yield return null;
         }
+
+        Debug.Log(currTimelineSpot);
 
         fader.gameObject.SetActive(false);
         Time.timeScale = 1;
