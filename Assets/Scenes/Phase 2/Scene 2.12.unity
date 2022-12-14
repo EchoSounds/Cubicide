@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.5000002, g: 0.25292972, b: 0.25292972, a: 1}
+  m_IndirectSpecularColor: {r: 0.049857564, g: 0.04439196, b: 0.03542056, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1833,7 +1833,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1434768007}
-  - {fileID: 6092916589662952241}
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7060,6 +7059,7 @@ GameObject:
   - component: {fileID: 2025622871}
   - component: {fileID: 2025622870}
   - component: {fileID: 2025622869}
+  - component: {fileID: 2025622874}
   m_Layer: 0
   m_Name: TruckHit
   m_TagString: Untagged
@@ -7159,6 +7159,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!114 &2025622874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2025622868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e8b058c9f8a4b74f822df1ae0cfd148, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SuccessTriggered:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3854984810280778546, guid: 9d28d2c5afecf0b419ba3daa417a0b75, type: 3}
+        m_TargetAssemblyTypeName: PopUpMenu, Assembly-CSharp
+        m_MethodName: MainMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  hasBeenTriggered: 1
 --- !u!1 &2038583210
 GameObject:
   m_ObjectHideFlags: 0
@@ -7624,65 +7652,3 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2137077537}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1001 &6092916589662952240
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 507624940}
-    m_Modifications:
-    - target: {fileID: 6620172436521661326, guid: 8522db3bf2014204e9803b04e50a7794, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6620172436521661326, guid: 8522db3bf2014204e9803b04e50a7794, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -68.75635
-      objectReference: {fileID: 0}
-    - target: {fileID: 6620172436521661326, guid: 8522db3bf2014204e9803b04e50a7794, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -168.12204
-      objectReference: {fileID: 0}
-    - target: {fileID: 6620172436521661326, guid: 8522db3bf2014204e9803b04e50a7794, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 76.25781
-      objectReference: {fileID: 0}
-    - target: {fileID: 6620172436521661326, guid: 8522db3bf2014204e9803b04e50a7794, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6620172436521661326, guid: 8522db3bf2014204e9803b04e50a7794, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6620172436521661326, guid: 8522db3bf2014204e9803b04e50a7794, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6620172436521661326, guid: 8522db3bf2014204e9803b04e50a7794, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6620172436521661326, guid: 8522db3bf2014204e9803b04e50a7794, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6620172436521661326, guid: 8522db3bf2014204e9803b04e50a7794, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6620172436521661326, guid: 8522db3bf2014204e9803b04e50a7794, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8992446855879568914, guid: 8522db3bf2014204e9803b04e50a7794, type: 3}
-      propertyPath: m_Name
-      value: MenuManager
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 8522db3bf2014204e9803b04e50a7794, type: 3}
---- !u!4 &6092916589662952241 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6620172436521661326, guid: 8522db3bf2014204e9803b04e50a7794, type: 3}
-  m_PrefabInstance: {fileID: 6092916589662952240}
-  m_PrefabAsset: {fileID: 0}

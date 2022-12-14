@@ -1064,8 +1064,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   promptText: {fileID: 138861383}
   winLoseText: {fileID: 2055861483}
+  beforePromptEvents:
+    m_PersistentCalls:
+      m_Calls: []
+  afterPromptEvents:
+    m_PersistentCalls:
+      m_Calls: []
   promptTextContents: Find Him!
-  winLoseTextContents: You Found him!
+  winTextContents: 
+  loseTextContents: 
   textStayTime: 1
 --- !u!114 &361183035
 MonoBehaviour:
@@ -1939,6 +1946,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tristan(Simple)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c97117d566d6e61468024b5e5963dfa6, type: 3}
+      propertyPath: m_TagString
+      value: GoalTrigger
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c97117d566d6e61468024b5e5963dfa6, type: 3}
 --- !u!1 &1784915527
@@ -2163,7 +2174,19 @@ MonoBehaviour:
       m_Calls: []
   goalConsequence:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6818762254237578864, guid: 4aaf5811bc282564da4ec183a838a5c3, type: 3}
+        m_TargetAssemblyTypeName: BaseGameManager, Assembly-CSharp
+        m_MethodName: TimelineProgress
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!65 &1900871497
 BoxCollider:
   m_ObjectHideFlags: 0
