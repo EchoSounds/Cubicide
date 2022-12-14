@@ -934,68 +934,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!1001 &693227474
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1227717902}
-    m_Modifications:
-    - target: {fileID: 6620172436521661326, guid: 8522db3bf2014204e9803b04e50a7794, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6620172436521661326, guid: 8522db3bf2014204e9803b04e50a7794, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -68.75635
-      objectReference: {fileID: 0}
-    - target: {fileID: 6620172436521661326, guid: 8522db3bf2014204e9803b04e50a7794, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -168.12204
-      objectReference: {fileID: 0}
-    - target: {fileID: 6620172436521661326, guid: 8522db3bf2014204e9803b04e50a7794, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 76.25781
-      objectReference: {fileID: 0}
-    - target: {fileID: 6620172436521661326, guid: 8522db3bf2014204e9803b04e50a7794, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6620172436521661326, guid: 8522db3bf2014204e9803b04e50a7794, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6620172436521661326, guid: 8522db3bf2014204e9803b04e50a7794, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6620172436521661326, guid: 8522db3bf2014204e9803b04e50a7794, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6620172436521661326, guid: 8522db3bf2014204e9803b04e50a7794, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6620172436521661326, guid: 8522db3bf2014204e9803b04e50a7794, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6620172436521661326, guid: 8522db3bf2014204e9803b04e50a7794, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8992446855879568914, guid: 8522db3bf2014204e9803b04e50a7794, type: 3}
-      propertyPath: m_Name
-      value: MenuManager
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 8522db3bf2014204e9803b04e50a7794, type: 3}
---- !u!4 &693227475 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6620172436521661326, guid: 8522db3bf2014204e9803b04e50a7794, type: 3}
-  m_PrefabInstance: {fileID: 693227474}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &932565970 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2776296459446555870, guid: e1736321014ca2c46aad9e82942189f4, type: 3}
@@ -1572,14 +1510,14 @@ MonoBehaviour:
   m_text: New Text
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 5c7d9351a3acdf747ba76034af6daa48, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1714,10 +1652,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -1759,7 +1697,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1987288203}
-  - {fileID: 693227475}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2090,7 +2027,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 212, y: 100}
+  m_AnchoredPosition: {x: 240, y: -142}
   m_SizeDelta: {x: -765.51, y: -416.9799}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1496027733
@@ -2385,7 +2322,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 394}
+  m_AnchoredPosition: {x: -107, y: 436.44}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1987288204
@@ -2411,7 +2348,7 @@ MonoBehaviour:
   m_text: ' Punish HIM!!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 62676f138534fc24093a1d0eabb07e1b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2441,11 +2378,11 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_fontStyle: 1
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
-  m_characterSpacing: 0
+  m_characterSpacing: -5.93
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
