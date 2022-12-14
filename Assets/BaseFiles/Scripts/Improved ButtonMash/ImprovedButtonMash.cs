@@ -183,6 +183,7 @@ public class ImprovedButtonMash : MonoBehaviour
                     {
                         progress.Invoke();
                         WinState();
+                        playing = false;
                     }
                 }
             }
@@ -201,6 +202,7 @@ public class ImprovedButtonMash : MonoBehaviour
                     {
                         progress.Invoke();
                         WinState();
+                        playing=false;
                     }
                 }
                 else if (remainingTime <= 0)
@@ -265,7 +267,7 @@ public class ImprovedButtonMash : MonoBehaviour
         playing = false;
 
         winState.Invoke();
-        StartCoroutine(FinishGame());
+        //StartCoroutine(FinishGame());
 
         AC.sprite = keyCapCovers[0];
         DC.sprite = keyCapCovers[0];
@@ -274,13 +276,13 @@ public class ImprovedButtonMash : MonoBehaviour
         S.sprite = keyCapCovers[3];
     }
 
-    private IEnumerator FinishGame()
-    {
-        Debug.Log("Waiting");
-        yield return new WaitForSeconds(1f);
-        Debug.Log("Done");
-        BaseGameManager.LoadScene(false,1, 2);
-    }
+    //private IEnumerator FinishGame()
+    //{
+    //    Debug.Log("Waiting");
+    //    yield return new WaitForSeconds(1f);
+    //    Debug.Log("Done");
+    //    BaseGameManager.LoadScene(false,1, 2);
+    //}
 
     private void LoseState()
     {

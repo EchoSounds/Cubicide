@@ -1288,7 +1288,7 @@ GameObject:
   - component: {fileID: 1130353583}
   - component: {fileID: 1130353584}
   m_Layer: 0
-  m_Name: Quad
+  m_Name: This is the fucking goal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1390,6 +1390,18 @@ MonoBehaviour:
       - m_Target: {fileID: 434929900}
         m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
         m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6818762254237578864, guid: 4aaf5811bc282564da4ec183a838a5c3, type: 3}
+        m_TargetAssemblyTypeName: BaseGameManager, Assembly-CSharp
+        m_MethodName: TimelineProgress
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

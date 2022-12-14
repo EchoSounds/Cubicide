@@ -1304,11 +1304,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 65e2fc3abe1bb8c46bc31bab782fca2a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.108366184
+      value: 0.1083662
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 65e2fc3abe1bb8c46bc31bab782fca2a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.6603292
+      value: 1.660329
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 65e2fc3abe1bb8c46bc31bab782fca2a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1817,8 +1817,20 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bf57e3c14a77869488bca61badfcb437, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.2652
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bf57e3c14a77869488bca61badfcb437, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.2652
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bf57e3c14a77869488bca61badfcb437, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.2652
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bf57e3c14a77869488bca61badfcb437, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.098
+      value: -0.38
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bf57e3c14a77869488bca61badfcb437, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1995,28 +2007,28 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1805087222}
-        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
-        m_MethodName: StartPlayback
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1416306287}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
-        m_MethodName: StartPlayback
-        m_Mode: 1
+        m_MethodName: SetTrigger
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: TicketMove
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1805087222}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: SetTrigger
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: MoveForward
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 543296903}

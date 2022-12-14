@@ -53,7 +53,7 @@ public int currTimelineSpot = 0;
 
     private IEnumerator FadeScene(bool restart,float duration, float waitTime)
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
 
         fader.gameObject.SetActive(true);
 
@@ -68,7 +68,7 @@ public int currTimelineSpot = 0;
         {
             currTimelineSpot++;
             Debug.Log(currTimelineSpot);
-        } else
+        } else if (restart == true)
         {
             currTimelineSpot = 1;
             Debug.Log("restarting");
@@ -89,6 +89,8 @@ public int currTimelineSpot = 0;
             fader.color = new Color(0, 0, 0, Mathf.Lerp(1, 0, i));
             yield return null;
         }
+
+        Debug.Log(currTimelineSpot);
 
         fader.gameObject.SetActive(false);
         Time.timeScale = 1;
