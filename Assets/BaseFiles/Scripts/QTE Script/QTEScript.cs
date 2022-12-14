@@ -16,6 +16,8 @@ public class QTEScript : MonoBehaviour
     public bool stopTimer = false;
     public TextMeshProUGUI timer;
 
+    
+
     private void Awake()
     {
         inputs = new PlayerInputs();
@@ -57,6 +59,7 @@ public class QTEScript : MonoBehaviour
             }
             else if (remainingTime <= 0)
             {
+                stopTimer = true;
                 timerFailState.Invoke();
                 Debug.Log("Timer has run out!");
             }

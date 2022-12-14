@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using TMPro;
 
 public class FarmerMovement : PlayerMovementOld
@@ -8,6 +9,7 @@ public class FarmerMovement : PlayerMovementOld
     [Header("Scene 1.2.2 Level Specific")]
     [SerializeField] protected TextMeshProUGUI promptText;
     [SerializeField] protected TextMeshProUGUI winLoseText;
+    [SerializeField] protected UnityEvent loseState;
     [SerializeField] protected GameTimer gameTimer;
     [SerializeField] protected float textStayTime;
     [SerializeField] protected bool isFacingRight = true;
@@ -112,8 +114,9 @@ public class FarmerMovement : PlayerMovementOld
         AllowVerticalMovement = false;
         AllowJumping = false;
         gameTimer.StopTimer = true;
-        winLoseText.enabled = true;
-        winLoseText.GetComponent<TextMeshProUGUI>().text = "You lose!";
+        //winLoseText.enabled = true;
+        loseState.Invoke();
+        //winLoseText.GetComponent<TextMeshProUGUI>().text = "You lose!";
         yield return new WaitForSeconds(textStayTime);
         Debug.Log("Microgame Finished.");
     }
